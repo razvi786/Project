@@ -1,9 +1,28 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Company } from 'src/models/company';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class CompanyService {
 
-  constructor() { }
+  httpUrl="http://localhost:3000/companies/";
+
+  constructor(private httpClient:HttpClient) { }
+
+  saveCompany(company:Company):Observable<Company>{
+    return this.httpClient.post<Company>(this.httpUrl, company);
+  }
+
+  removeCompany(id:number):Observable<Company>{
+    return this.httpClient.delete<Company>(this.httpUrl + id);
+  }
+
+  getAllCompanies():Observable<Company[]>{
+    return this.httpClient.get<Company[]>(this.httpUrl);
+  }
+
 }

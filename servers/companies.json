@@ -1,0 +1,36 @@
+{
+  "companies": [
+    {
+      "id": 101,
+      "name": "cognizant",
+      "turnover": 500000000,
+      "ceo": "brein humpire",
+      "board_of_directors": [
+        "Prudhvi",
+        "Bhanu",
+        "Syed"
+      ],
+      "listed_in_stock_exchanges": [
+        "BSE",
+        "NSE"
+      ],
+      "sector": "IT",
+      "brief": "Very good company",
+      "stock_code": "COG123"
+    },
+    {
+      "id": 102,
+      "name": "Ehsan",
+      "turnover": "123234",
+      "ceo": "af",
+      "board_of_directors": "sadfsdf",
+      "listed_in_stock_exchanges": [
+        "bse",
+        "nse"
+      ],
+      "sector": "sdfsd",
+      "brief": "gsgsf",
+      "stock_code": "asdfad"
+    }
+  ]
+}

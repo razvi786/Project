@@ -1,45 +1,37 @@
-<div class="row mb-5">
-  <div class="col-6 my-3">
-      
-      <div class="card my-card border border-curved text-center" onclick="location.href='add-company.html'">
-          <img src="images/import.jpg" alt="" class="card-img-top mx-auto">
-          <div class="card-body">
-              <h4 class="card-title display-4">Add New Company</h4>
-          </div>
-      </div>
-      
-  </div>
-  
-  <div class="col-6 my-3">
-      
-      <div class="card my-card border border-curved text-center" onclick="location.href='update-company.html'">
-          <img src="images/import.jpg" alt="" class="card-img-top mx-auto">
-          <div class="card-body">
-              <h4 class="card-title display-4">Update Existing Company</h4>
-          </div>
-      </div>
-      
-  </div>
+<div class="row py-5 py-md-4 py-3">
+    <div class="col-12 mx-auto">
+        <table class="table table-responsive border-curved p-1 p-md-3 p-lg-5">
+            <caption style="caption-side: top;"><h1 class="text-center text-uppercase" >Companies</h1></caption>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Company Name</th>
+                    <th>Turnover</th>
+                    <th>CEO</th>
+                    <th>Board Of Directors</th>
+                    <th>Listed In Stock Exchanges</th>
+                    <th>Sector</th>
+                    <th>Brief</th>
+                    <th>Stock Code</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let company of companies">
+                <tr>
+                    <td>{{company.id}}</td>
+                    <td>{{company.name}}</td>
+                    <td>{{company.turnover}}</td>
+                    <td>{{company.ceo}}</td>
+                    <td>{{company.board_of_directors}}</td>
+                    <td>{{company.listed_in_stock_exchanges}}</td>
+                    <td>{{company.sector}}</td>
+                    <td>{{company.brief}}</td>
+                    <td>{{company.stock_code}}</td>
+                    <td><button class="btn btn-warning">Update</button><button class="btn btn-danger">Deactivate</button></td>
+                </tr>
+            </tbody>
+        </table>
 
-  <div class="col-6 my-3">
-      
-      <div class="card my-card border border-curved text-center" onclick="location.href='deactivate-company.html'">
-          <img src="images/import.jpg" alt="" class="card-img-top mx-auto">
-          <div class="card-body">
-              <h4 class="card-title display-4">Deactive Existing Company</h4>
-          </div>
-      </div>
-      
-  </div>
-
-  <div class="col-6 my-3">
-      
-      <div class="card my-card border border-curved text-center" onclick="location.href='update-ipo.html'">
-          <img src="images/import.jpg" alt="" class="card-img-top mx-auto">
-          <div class="card-body">
-              <h4 class="card-title display-4">Update IPO Details</h4>
-          </div>
-      </div>
-      
-  </div>
+        <button class="btn btn-block btn-outline-secondary" routerLink="/add-stock-exchange">Add Stock Exchange</button>
+    </div>
 </div>

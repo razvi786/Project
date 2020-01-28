@@ -1,39 +1,39 @@
 <div class="row">
   <div class="col-3"></div>
   <div class="col-6">
-    <form action="" class="form-group border p-5 border-curved mt-5">
+    <form [formGroup]="registerCompany" class="form-group border p-5 border-curved mt-5">
       <p class="h1 text-muted text-uppercase text-center mb-4">Company</p>
    
 
-      <label for="username">Company Name:</label>
-      <input type="text" class="form-control" placeholder="Name of Company">
+      <label for="name">Company Name:</label>
+      <input type="text" name="name" formControlName="name" class="form-control" placeholder="Name of Company">
 
-      <label for="username">Turnover:</label>
-      <input type="text" class="form-control" placeholder="Company Turnover">
+      <label for="turnover">Turnover:</label>
+      <input type="text" name="turnover" formControlName="turnover" class="form-control" placeholder="Company Turnover">
 
-      <label for="username">CEO:</label>
-      <input type="text" class="form-control" placeholder="CEO of Company">
+      <label for="ceo">CEO:</label>
+      <input type="text" name="ceo" formControlName="ceo" class="form-control" placeholder="CEO of Company">
 
-      <label for="username">Board of Director:</label>
-      <input type="text" class="form-control mb-4" placeholder="Board of Director of Company">
+      <label for="board-of-directors">Board of Director:</label>
+      <input type="text" name="board-of-directors" formControlName="board_of_directors" class="form-control mb-4" placeholder="Board of Director of Company">
 
-      <label for="username">Listed in Stock Exchanges:</label><br>
+      <label for="listed-in-stock-exchanges">Listed in Stock Exchanges:</label><br>
       <small class="text-info">Hold [Ctrl] to Select Multiple Stock Exchanges</small>
-      <select class="form-control" name="listed" id="" multiple size="2">
+      <select class="form-control" name="listed-in-stock-exchanges" formControlName="listed_in_stock_exchanges" multiple size="2">
           <option value="bse">BSE</option>
           <option value="nse">NSE</option>
       </select>
 
-      <label for="username">Sector:</label>
-      <input type="text" class="form-control" placeholder="Name of Sector">
+      <label for="sector">Sector:</label>
+      <input type="text" name="sector" formControlName="sector" class="form-control" placeholder="Name of Sector">
 
-      <label for="username">Brief:</label>
-      <textarea class="form-control" name="brief" id="" cols="30" rows="3" placeholder="Brief Information about Company"></textarea>
+      <label for="brief">Brief:</label>
+      <textarea class="form-control" name="brief" formControlName="brief" id="" cols="30" rows="3" placeholder="Brief Information about Company"></textarea>
 
-      <label for="username">Stock Code:</label>
-      <input type="text" class="form-control mb-4" placeholder="Unique Stock Code">
+      <label for="stock_code">Stock Code:</label>
+      <input type="text" name="stock_code" formControlName="stock_code" class="form-control mb-4" placeholder="Unique Stock Code">
 
-      <button class="btn btn-outline-success text-dark text-center form-control">Add Company</button>
+      <button type="submit" class="btn btn-outline-success text-dark text-center form-control" (click)="addCompany()" [disabled]="!registerCompany.valid">Add Company</button>
     </form>
   </div>
 </div>

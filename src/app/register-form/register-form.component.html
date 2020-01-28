@@ -3,7 +3,7 @@
       <div class="col-lg-3 col-md-2 col-sm-1"></div>
       <div class="col-lg-6 col-md-8 col-sm-10">
         <form [formGroup]="registerUser" class="form-group border p-3 p-lg-5 border-curved mt-5">
-          <p class="h2 text-muted text-uppercase text-center mb-3 ">Registration</p>
+          <p class="h2 text-muted text-uppercase text-center">Registration</p>
 
           <label for="username">Username:</label>
           <input name="username" formControlName="username" type="text" class="form-control" placeholder="Your Username">
@@ -20,7 +20,7 @@
           <label for="phone">Mobile Number:</label>
           <input name="phone" formControlName="phone" type="number" class="form-control" placeholder="Your Mobile Number">
 
-          <p class="text-center w-100 my-2"><a routerLink="login">Already Have an Account? Click Here to Login.</a></p>
+          <p class="text-center w-100 my-2"><a routerLink="/login">Already Have an Account? Click Here to Login.</a></p>
 
           <button class="btn btn-outline-success text-dark text-center form-control" (click)="addUser()" [disabled]="!registerUser.valid">Register</button>
         </form>

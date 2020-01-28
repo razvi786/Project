@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/services/user.service';
+import { CompanyService } from 'src/services/company.service';
 
 @Component({
   selector: 'app-add-company',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddCompanyComponent implements OnInit {
 
-  constructor() { }
+  registerCompany:FormGroup;
+
+  constructor(private formBuilder:FormBuilder,private companyService:CompanyService) { }
+
+  addCompany(){
+    this.companyService.saveCompany(this.registerCompany.value).subscribe(data=>{
+      alert("company added successfully");
+    });
+  }
 
   ngOnInit() {
+    this.registerCompany=this.formBuilder.group({
+      id:[],
+      name:['',Validators.required],
+      turnover:['',Validators.required],
+      ceo:['',Validators.required],
+      board_of_directors:['',Validators.required],
+      listed_in_stock_exchanges:['',Validators.required],
+      sector:['',Validators.required],
+      brief:['',Validators.required],
+      stock_code:['',Validators.required]
+    });
   }
 
 }
