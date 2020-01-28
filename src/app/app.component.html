@@ -1,34 +1,40 @@
 
 <header>
     <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="">
+        <a class="navbar-brand" routerLink="">
             <img class="avatar" src="../assets/images/syed-logo.svg" alt="Stock Logo">
         </a>
-        <a href="" class="h3 nav-link">StockMarket</a>
+        <a routerLink="" class="h3 nav-link text-dark">StockMarket</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#collNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="collNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a href="" class="nav-link text-center">Home</a>
+                    <a routerLink="" class="nav-link text-center">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="login" class="nav-link text-center">Login</a>
+                    <a routerLink="login" class="nav-link text-center">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a href="register" class="nav-link text-center">Register</a>
+                    <a routerLink="register" class="nav-link text-center">Register</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link text-danger text-center">Logout</a>
+                    <a routerLink="admin" class="nav-link text-center">Admin</a>
                 </li>
+                <li class="nav-item">
+                    <a routerLink="" class="nav-link text-danger text-center">Logout</a>
+                </li>
+                
             </ul>
         </div>
     </nav>
 </header>
 
 <main>
-    <router-outlet></router-outlet>
+    <div id="body" class="container my-lg-5 my-md-3 my-2">
+        <router-outlet></router-outlet>
+    </div>
 </main>
 
 <footer class="page-footer bg-secondary p-3 container-fluid">

@@ -1,0 +1,23 @@
+<table class="table table-striped">
+  <caption style="caption-side: top;" class="text-center h1">All Users</caption>
+  <thead>
+    <th>Id</th>
+    <th>Username</th>
+    <th>Password</th>
+    <th>Admin</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Confirmed</th>
+    <th>Actions</th>
+  </thead>
+  <tbody *ngFor="let user of users">
+    <td>{{user.id}}</td>
+    <td>{{user.username}}</td>
+    <td>{{user.password}}</td>
+    <td>{{user.admin}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.phone}}</td>
+    <td>{{user.confirmed}}</td>
+    <td><button class="btn btn-danger" (click)="deleteUser(user)">Delete</button></td>
+  </tbody>
+</table>

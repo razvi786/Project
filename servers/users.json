@@ -1,0 +1,23 @@
+{
+  "users": [
+    {
+      "id": 101,
+      "username": "syed",
+      "password": "syed",
+      "admin": true,
+      "email": "syed@gmail.com",
+      "phone": 6304973550,
+      "confirmed": true
+    },
+    {
+      "id": 102,
+      "username": "ehsan",
+      "password": "123",
+      "confirm_password": "123",
+      "admin": "false",
+      "email": "ehsan.razvi786@gmail.com",
+      "phone": 567587,
+      "confirmed": "false"
+    }
+  ]
+}
