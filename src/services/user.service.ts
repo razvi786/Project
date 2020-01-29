@@ -8,7 +8,7 @@ import { User } from 'src/models/user';
 })
 export class UserService {
 
-  httpUrl="http://localhost:3000/users/";
+  httpUrl="http://localhost:3001/users/";
 
   constructor(private httpClient:HttpClient) { }
 
@@ -20,8 +20,16 @@ export class UserService {
     return this.httpClient.delete<User>(this.httpUrl + id);
   }
 
+  getUserById(id:number):Observable<User>{
+    return this.httpClient.get<User>(this.httpUrl + id);
+  }
+
   getAllUsers():Observable<User[]>{
     return this.httpClient.get<User[]>(this.httpUrl);
+  }
+
+  updateUser(user:User):Observable<User>{
+    return this.httpClient.put<User>(this.httpUrl + user.id , user);
   }
   
 }

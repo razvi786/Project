@@ -1,5 +1,5 @@
 <div class="row py-5 py-md-4 py-3">
-    <div class="col-12 mx-auto">
+    <div class="col mx-auto">
         <table class="table table-responsive border-curved p-1 p-md-3 p-lg-5">
             <caption style="caption-side: top;"><h1 class="text-center text-uppercase" >Companies</h1></caption>
             <thead>
@@ -17,7 +17,7 @@
                 </tr>
             </thead>
             <tbody *ngFor="let company of companies">
-                <tr>
+                <tr >
                     <td>{{company.id}}</td>
                     <td>{{company.name}}</td>
                     <td>{{company.turnover}}</td>
@@ -27,11 +27,28 @@
                     <td>{{company.sector}}</td>
                     <td>{{company.brief}}</td>
                     <td>{{company.stock_code}}</td>
-                    <td><button class="btn btn-warning">Update</button><button class="btn btn-danger">Deactivate</button></td>
+                    <td><button class="btn btn-warning mx-auto m-2" (click)="updateCompany(company)">Update</button><button class="btn btn-danger mx-auto m-2" data-toggle="modal" data-target="#deactivate" (click)="deactivateCompany(company)">Deactivate</button></td>
                 </tr>
             </tbody>
         </table>
 
-        <button class="btn btn-block btn-outline-secondary" routerLink="/add-stock-exchange">Add Stock Exchange</button>
+        <button class="btn btn-block btn-outline-secondary" routerLink="/add-company">Add New Company</button>
     </div>
 </div>
+
+<div id="deactivate" class="modal fade" tabindex="-1">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Are You Sure You Want To Deactivate This Company?</h5>
+        <button class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+          <button class="btn btn-block btn-danger text-white" (click)="deactivateThisCompany()" data-dismiss="modal">Confirm</button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-block btn-outline-warning" data-dismiss="modal">No</button>
+      </div>
+    </div>
+    </div>
+    </div>

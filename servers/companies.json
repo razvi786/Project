@@ -11,26 +11,72 @@
         "Syed"
       ],
       "listed_in_stock_exchanges": [
-        "BSE",
-        "NSE"
+        "bse",
+        "nse"
       ],
       "sector": "IT",
       "brief": "Very good company",
-      "stock_code": "COG123"
+      "stock_code": "COG12345",
+      "activated": false
     },
     {
       "id": 102,
       "name": "Ehsan",
       "turnover": "123234",
-      "ceo": "af",
-      "board_of_directors": "sadfsdf",
+      "ceo": "Syed Ehsan Ali",
+      "board_of_directors": "sadfsdf, askjdgaijsk",
       "listed_in_stock_exchanges": [
         "bse",
         "nse"
       ],
       "sector": "sdfsd",
       "brief": "gsgsf",
-      "stock_code": "asdfad"
+      "stock_code": "asdfad",
+      "activated": false
+    },
+    {
+      "id": 103,
+      "name": "Arich",
+      "turnover": "700000",
+      "ceo": "Selva",
+      "board_of_directors": "Anyone",
+      "listed_in_stock_exchanges": [
+        "bse",
+        "nse"
+      ],
+      "sector": "IT",
+      "brief": "Very good training",
+      "stock_code": "ARICH123",
+      "activated": false
+    },
+    {
+      "id": 104,
+      "name": "Apple",
+      "turnover": "500000",
+      "ceo": "Tim",
+      "board_of_directors": "Someone",
+      "listed_in_stock_exchanges": [
+        "bse",
+        "nse"
+      ],
+      "sector": "IT",
+      "brief": "great company",
+      "stock_code": "APP123",
+      "activated": "true"
+    },
+    {
+      "id": 105,
+      "name": "Arich Infotech",
+      "turnover": "200000",
+      "ceo": "hi",
+      "board_of_directors": "Somebody",
+      "listed_in_stock_exchanges": [
+        "nse"
+      ],
+      "sector": "IT sect",
+      "brief": "Training",
+      "stock_code": "ARICH456",
+      "activated": false
     }
   ]
 }

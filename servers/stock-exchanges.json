@@ -1,0 +1,18 @@
+{
+  "stock_exchanges":[
+    {
+      "id":101,
+      "stock_exchange":"SSE",
+      "brief":"Syed Stock Exchange",
+      "address":"Hyderabad",
+      "remarks":"Very Good Stock Exchange"
+    }
+    {
+      "id":102,
+      "stock_exchange":"YSE",
+      "brief":"Your Stock Exchange",
+      "address":"India",
+      "remarks":"Excellent Stock Exchange"
+    }
+  ]
+}

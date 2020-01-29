@@ -1,5 +1,7 @@
-<table class="table table-striped">
-  <caption style="caption-side: top;" class="text-center h1">All Users</caption>
+<div class="row py-5 py-md-4 py-3">
+  <div class="col mx-auto">
+      <table class="table table-responsive border-curved p-1 p-md-3 p-lg-5">
+          <caption style="caption-side: top;"><h1 class="text-center text-uppercase" >All Users</h1></caption>
   <thead>
     <th>Id</th>
     <th>Username</th>
@@ -18,6 +20,12 @@
     <td>{{user.email}}</td>
     <td>{{user.phone}}</td>
     <td>{{user.confirmed}}</td>
-    <td><button class="btn btn-danger" (click)="deleteUser(user)">Delete</button></td>
+    <td><button class="btn btn-danger mx-auto m-2" (click)="deleteUser(user)">Delete</button>
+      <button class="btn btn-warning mx-auto m-2" (click)="updateUser(user)">Update</button>
+    </td>
   </tbody>
 </table>
+
+<button class="btn btn-block btn-outline-secondary" routerLink="/register">Add New User</button>
+    </div>
+</div>

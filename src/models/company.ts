@@ -8,4 +8,5 @@ export class Company{
     sector:string;
     brief:string;
     stock_code:string;
+    activated:boolean;
 }

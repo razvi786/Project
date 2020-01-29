@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/services/user.service';
 import { CompanyService } from 'src/services/company.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-company',
@@ -12,11 +13,12 @@ export class AddCompanyComponent implements OnInit {
 
   registerCompany:FormGroup;
 
-  constructor(private formBuilder:FormBuilder,private companyService:CompanyService) { }
+  constructor(private formBuilder:FormBuilder,private companyService:CompanyService,private router:Router) { }
 
   addCompany(){
     this.companyService.saveCompany(this.registerCompany.value).subscribe(data=>{
       alert("company added successfully");
+      this.router.navigate(['/manage-company']);
     });
   }
 
@@ -30,7 +32,8 @@ export class AddCompanyComponent implements OnInit {
       listed_in_stock_exchanges:['',Validators.required],
       sector:['',Validators.required],
       brief:['',Validators.required],
-      stock_code:['',Validators.required]
+      stock_code:['',Validators.required],
+      activated:['true',Validators.required]
     });
   }
 

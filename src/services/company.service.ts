@@ -25,4 +25,12 @@ export class CompanyService {
     return this.httpClient.get<Company[]>(this.httpUrl);
   }
 
+  getCompanyById(id:number):Observable<Company>{
+    return this.httpClient.get<Company>(this.httpUrl + id);
+  }
+
+  updateCompany(company:Company):Observable<Company>{
+    return this.httpClient.put<Company>(this.httpUrl + company.id,company);
+  }
+
 }

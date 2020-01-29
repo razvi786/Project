@@ -16,6 +16,8 @@ import { ManageCompanyComponent } from './manage-company/manage-company.componen
 import { ManageStockExchangeComponent } from './manage-stock-exchange/manage-stock-exchange.component';
 import { AddIpoComponent } from './add-ipo/add-ipo.component';
 import { UpdateCompanyComponent } from './update-company/update-company.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 const routes: Routes = [
@@ -34,7 +36,9 @@ const routes: Routes = [
   {path:'update-company' ,component: UpdateCompanyComponent},
   {path:'import-data' ,component: ImportDataComponent},
   {path:'manage-company' ,component: ManageCompanyComponent },
-  {path:'manage-stock-exchange' ,component: ManageStockExchangeComponent }
+  {path:'manage-stock-exchange' ,component: ManageStockExchangeComponent },
+  {path:'update-user',component: UpdateUserComponent},
+  {path:'change-password',component: ChangePasswordComponent}
 ];
 
 @NgModule({

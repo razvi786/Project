@@ -2,22 +2,25 @@
   "users": [
     {
       "id": 101,
-      "username": "syed",
-      "password": "syed",
-      "admin": true,
+      "username": "razvi",
+      "old_password": "hello1",
+      "password": "hey",
+      "confirm_password": "hey",
+      "admin": false,
+      "confirmed": true,
       "email": "syed@gmail.com",
-      "phone": 6304973550,
-      "confirmed": true
+      "phone": 6304973550909
     },
     {
-      "id": 102,
-      "username": "ehsan",
-      "password": "123",
-      "confirm_password": "123",
+      "id": 103,
+      "username": "hello my page Everyone",
+      "old_password": "1234",
+      "password": "hyderabad",
+      "confirm_password": "hyderabad",
       "admin": "false",
+      "confirmed": "false",
       "email": "ehsan.razvi786@gmail.com",
-      "phone": 567587,
-      "confirmed": "false"
+      "phone": 4568
     }
   ]
 }

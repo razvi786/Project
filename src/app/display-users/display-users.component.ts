@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-display-users',
@@ -9,7 +10,7 @@ import { User } from 'src/models/user';
 })
 export class DisplayUsersComponent implements OnInit {
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService, private router:Router) { }
 
   users:User[];
 
@@ -17,6 +18,7 @@ export class DisplayUsersComponent implements OnInit {
     this.userService.getAllUsers().subscribe(data => {
       this.users=data;
     })
+   
   }
 
   deleteUser(user:User){
@@ -24,6 +26,12 @@ export class DisplayUsersComponent implements OnInit {
       alert("User "+user.username+" Deleted Successfully");
     });
     this.users=this.users.filter(u => u!==user);
+  }
+
+  updateUser(user:User){
+    localStorage.removeItem('userId');
+    localStorage.setItem('userId',user.id.toString());
+    this.router.navigate(['/update-user']);
   }
 
 }

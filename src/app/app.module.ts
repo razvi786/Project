@@ -23,6 +23,8 @@ import { DisplayUsersComponent } from './display-users/display-users.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { RouterModule } from '@angular/router';
     ManageCompanyComponent,
     ManageStockExchangeComponent,
     AddIpoComponent,
-    DisplayUsersComponent
+    DisplayUsersComponent,
+    UpdateUserComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
