@@ -28,3 +28,19 @@ main{
 .carousel-item:hover{
   cursor: pointer;
 }
+.responsive-footer{
+  font-size: 2vw;
+}
+.responsive-logo{
+  font-size:2vw;
+}
+body {
+  background-image: url("./assets/images/background3.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size:cover;
+}
+.h2{
+  -webkit-text-stroke: 1px black;
+    -webkit-text-fill-color: white;
+}

@@ -1,0 +1,36 @@
+<div>
+    <div class="row">
+        <div class="col-lg-3 col-md-2 col-sm-1"></div>
+        <div class="col-lg-6 col-md-8 col-sm-10">
+          <div class="form-group border p-3 p-lg-5 border-curved mt-5">
+            <p class="h2 text-muted text-uppercase text-center">User Profile</p>
+            <div class="">
+
+                <img src="{{user.dp}}" alt="Profile Picture" class="avatar m-3">
+
+                <label class="p-3 pl-5 h5" for="id">ID:</label>
+                <span class="p-3 lead">{{user.id}}</span>
+                <br>
+
+            <label class="p-3 h5" for="username">Username:</label>
+            <span class="p-3 lead">{{user.username}}</span>
+            <br>
+  
+            <label class="p-3 h5" for="email">Email:</label>
+            <span class="p-3 lead">{{user.email}}</span>
+            <br>
+  
+            <label class="p-3 h5" for="phone">Mobile Number:</label>
+            <span class="p-3 lead">{{user.phone}}</span>
+            <br>
+
+            <button class="btn btn-outline-warning text-dark text-center form-control my-3" (click)="updateUser()">Edit Profile</button>
+  
+            <button class="btn btn-outline-danger text-dark text-center form-control my-3" (click)="deactivateUser()">Deactivate Account</button>
+
+
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>

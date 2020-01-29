@@ -18,12 +18,14 @@ import { AddIpoComponent } from './add-ipo/add-ipo.component';
 import { UpdateCompanyComponent } from './update-company/update-company.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ResetCodeComponent } from './reset-code/reset-code.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 const routes: Routes = [
   {path:'login',component:LoginFormComponent},
   {path:'register',component:RegisterFormComponent},
-  {path:'',component:LandingPageComponent},
   {path:'admin',component:AdminPageComponent},
   {path:'user',component:UserPageComponent},
   {path:'display-users',component:DisplayUsersComponent},
@@ -38,7 +40,12 @@ const routes: Routes = [
   {path:'manage-company' ,component: ManageCompanyComponent },
   {path:'manage-stock-exchange' ,component: ManageStockExchangeComponent },
   {path:'update-user',component: UpdateUserComponent},
-  {path:'change-password',component: ChangePasswordComponent}
+  {path:'change-password',component: ChangePasswordComponent},
+  {path:'reset-code',component:ResetCodeComponent},
+  {path:'reset-password',component:ResetPasswordComponent},
+  {path:'user-profile',component:UserProfileComponent},
+
+  {path:'**',component:LandingPageComponent},
 ];
 
 @NgModule({

@@ -62,7 +62,7 @@
       "sector": "IT",
       "brief": "great company",
       "stock_code": "APP123",
-      "activated": "true"
+      "activated": false
     },
     {
       "id": 105,

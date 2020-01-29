@@ -25,6 +25,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ResetCodeComponent } from './reset-code/reset-code.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     AddIpoComponent,
     DisplayUsersComponent,
     UpdateUserComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ResetCodeComponent,
+    ResetPasswordComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

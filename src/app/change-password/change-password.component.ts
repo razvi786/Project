@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/services/user.service';
 import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/models/user';
 
 @Component({
   selector: 'app-change-password',
@@ -13,45 +14,36 @@ export class ChangePasswordComponent implements OnInit {
   constructor(private userService:UserService, private formBuilder:FormBuilder, private router:Router) { }
 
   updatePassword:FormGroup;
-  oldPassword:string;
+  
+  user:User;
 
   ngOnInit() {
     this.updatePassword=this.formBuilder.group({
-      id: [],
-      username: [],
       old_password:['',Validators.required],
       password:['',Validators.required],
       confirm_password:['',Validators.required],
-      admin:[],
-      confirmed:[],
-      email: [],
-      phone: []
     });
 
     const id=localStorage.getItem('userId');
-    if(+id>0){
-      this.userService.getUserById(+id).subscribe(user=>{
-        this.updatePassword.patchValue(user);
-      })
 
-    }
-    this.userService.getUserById(+id).subscribe(user=>{
-      this.oldPassword=user.password.toString();
+    this.userService.getUserById(+id).subscribe(data=>{
+      this.user=data;
     })
   }
 
   updateThisPassword(){
-    if((this.updatePassword.controls['password'].value === this.updatePassword.controls['confirm_password'].value)){
-      if(this.oldPassword === this.updatePassword.controls['old_password'].value){
-        this.userService.updateUser(this.updatePassword.value).subscribe(u=>{
+      if(this.user.password === this.updatePassword.controls['old_password'].value){
+        if((this.updatePassword.controls['password'].value === this.updatePassword.controls['confirm_password'].value)){
+          this.user.password=this.updatePassword.controls.password.value;
+          this.userService.updateUser(this.user).subscribe(u=>{
           this.router.navigate(['display-users']);
           alert('Your Password is Changed.');
         });
       }else{
-        alert('Your Old Password is Incorrect!');
+        alert('Your Passwords doesn\'t match');
       }
     }else{
-      alert('Your Passwords doesn\'t match');
+      alert('Your Old Password is Incorrect!');
     }
   }
 

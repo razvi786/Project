@@ -34,4 +34,10 @@ export class DisplayUsersComponent implements OnInit {
     this.router.navigate(['/update-user']);
   }
 
+  viewProfile(user:User){
+    localStorage.removeItem('userId');
+    localStorage.setItem('userId',user.id.toString());
+    this.router.navigate(['/user-profile']);
+  }
+
 }

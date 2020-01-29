@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class UpdateUserComponent implements OnInit {
 
   updateUser:FormGroup;
+  user:User;
 
   constructor(private formBuilder:FormBuilder,private userService:UserService,private router:Router) { }
 
@@ -20,9 +21,6 @@ export class UpdateUserComponent implements OnInit {
     this.updateUser=this.formBuilder.group({
       id: [],
       username: ['',Validators.required],
-      password:[],
-      admin:[],
-      confirmed:[],
       email: ['',[Validators.required,Validators.email]],
       phone: ['',Validators.required]
     });
@@ -31,14 +29,19 @@ export class UpdateUserComponent implements OnInit {
     if(+id > 0){
       this.userService.getUserById(+id).subscribe(user => {
         this.updateUser.patchValue(user);
+        this.user=user;
       });
     }
 
   }
 
   updateThisUser(){
-    this.userService.updateUser(this.updateUser.value).subscribe( u => {
-      this.router.navigate(['display-users']);
+    this.user.username=this.updateUser.controls.username.value;
+    this.user.email=this.updateUser.controls.email.value;
+    this.user.phone=this.updateUser.controls.phone.value;
+    this.userService.updateUser(this.user).subscribe( u => {
+      localStorage.setItem('userId',this.user.id.toString());
+      this.router.navigate(['user-profile']);
       alert('User Updated Successfully.');
     });
   }

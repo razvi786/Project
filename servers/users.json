@@ -3,24 +3,32 @@
     {
       "id": 101,
       "username": "razvi",
-      "old_password": "hello1",
-      "password": "hey",
-      "confirm_password": "hey",
+      "password": "hello",
       "admin": false,
-      "confirmed": true,
+      "confirmed": false,
       "email": "syed@gmail.com",
-      "phone": 6304973550909
+      "phone": 6304973550909,
+      "dp": "../../assets/images/default.png"
     },
     {
       "id": 103,
-      "username": "hello my page Everyone",
-      "old_password": "1234",
-      "password": "hyderabad",
-      "confirm_password": "hyderabad",
+      "username": "example",
+      "password": "india",
       "admin": "false",
-      "confirmed": "false",
-      "email": "ehsan.razvi786@gmail.com",
-      "phone": 4568
+      "confirmed": true,
+      "email": "ehsan.razvi786@yahoo.com",
+      "phone": 45689876,
+      "dp": "../../assets/images/default.png"
+    },
+    {
+      "id": 104,
+      "username": "syed",
+      "password": "syed",
+      "admin": "false",
+      "email": "syed@gmail.com",
+      "phone": 83467,
+      "confirmed": "true",
+      "dp": "../../assets/uploads/profile pictures/profile.jpg"
     }
   ]
 }

@@ -6,4 +6,6 @@ export class User{
   email:string;
   phone:number;
   confirmed:boolean;
+  code:number;
+  dp:string;
 }

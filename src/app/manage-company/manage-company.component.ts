@@ -50,11 +50,4 @@ export class ManageCompanyComponent implements OnInit {
     })
   }
 
-    deactivateClass(){
-      
-    }
-  
-
-  
-
 }
