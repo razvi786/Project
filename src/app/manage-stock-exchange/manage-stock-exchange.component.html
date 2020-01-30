@@ -1,8 +1,8 @@
 
     <div class="row py-5 py-md-4 py-3">
-            <div class="col-lg-9 col-md-10 col-12 mx-auto">
+            <div class="col-lg-9 col-md-10 col-12 mx-auto table-responsive">
                 <table class="table border-curved p-1 p-md-3 p-lg-5">
-                    <caption style="caption-side: top;"><h1 class="text-center text-uppercase" >Stock Exchanges</h1></caption>
+                    <caption style="caption-side: top;"><h1 class="h2 text-center text-uppercase" >Stock Exchanges</h1></caption>
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -10,22 +10,19 @@
                             <th>Brief</th>
                             <th>Contact Address</th>
                             <th>Remarks</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>BSE</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, quod.</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima ratione ipsum enim dicta cupiditate voluptatem adipisci cumque corporis non excepturi.</td>
-                            <td>Good</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>NSE</td>
-                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, natus.</td>
-                            <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit voluptatem expedita soluta similique? Expedita enim ut praesentium tempore. Earum, exercitationem.</td>
-                            <td>Good</td>
+                        <tr *ngFor="let se of ses">
+                            <td>{{se.id}}</td>
+                            <td>{{se.stock_exchange}}</td>
+                            <td>{{se.brief}}</td>
+                            <td>{{se.address}}</td>
+                            <td>{{se.remarks}}</td>
+                            <td>
+                                <button class="btn btn-warning m-3 mx-auto" (click)="updateStockExchange(se)">Update</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

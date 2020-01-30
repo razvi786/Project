@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { CompanyService } from 'src/services/company.service';
+import { Router } from '@angular/router';
+import { Company } from 'src/models/company';
+import { StockExchangeService } from 'src/services/stock-exchange.service';
+import { StockExchange } from 'src/models/stock-exchange';
 
 @Component({
   selector: 'app-manage-stock-exchange',
@@ -7,9 +12,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageStockExchangeComponent implements OnInit {
 
-  constructor() { }
+  ses:StockExchange[];
+
+  constructor(private seService:StockExchangeService,private router:Router) { }
 
   ngOnInit() {
+    this.seService.getAllStockExchanges().subscribe(data=>{
+      this.ses=data;
+    });
+  }
+
+  updateStockExchange(se:StockExchange){
+    localStorage.removeItem('seId');
+    localStorage.setItem('seId',se.id.toString());
+    this.router.navigate(['update-stock-exchange']);
   }
 
 }

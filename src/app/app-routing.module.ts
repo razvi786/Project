@@ -21,6 +21,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ResetCodeComponent } from './reset-code/reset-code.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UploadDpComponent } from './upload-dp/upload-dp.component';
+import { UpdateStockExchangeComponent } from './update-stock-exchange/update-stock-exchange.component';
 
 
 const routes: Routes = [
@@ -44,6 +46,8 @@ const routes: Routes = [
   {path:'reset-code',component:ResetCodeComponent},
   {path:'reset-password',component:ResetPasswordComponent},
   {path:'user-profile',component:UserProfileComponent},
+  {path:'upload-dp',component:UploadDpComponent},
+  {path:'update-stock-exchange',component:UpdateStockExchangeComponent},
 
   {path:'**',component:LandingPageComponent},
 ];

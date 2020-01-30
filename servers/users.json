@@ -3,7 +3,7 @@
     {
       "id": 101,
       "username": "razvi",
-      "password": "hello",
+      "password": "cognizant",
       "admin": false,
       "confirmed": false,
       "email": "syed@gmail.com",
@@ -15,7 +15,7 @@
       "username": "example",
       "password": "india",
       "admin": "false",
-      "confirmed": true,
+      "confirmed": false,
       "email": "ehsan.razvi786@yahoo.com",
       "phone": 45689876,
       "dp": "../../assets/images/default.png"
@@ -23,12 +23,33 @@
     {
       "id": 104,
       "username": "syed",
-      "password": "syed",
+      "password": "password",
       "admin": "false",
       "email": "syed@gmail.com",
-      "phone": 83467,
+      "phone": 12345,
       "confirmed": "true",
       "dp": "../../assets/uploads/profile pictures/profile.jpg"
+    },
+    {
+      "id": 105,
+      "username": "nagasri",
+      "password": "chinni",
+      "confirm_password": "chinni",
+      "admin": "false",
+      "email": "nagasri@cognizant.com",
+      "phone": 7777777777,
+      "confirmed": "false"
+    },
+    {
+      "id": 106,
+      "username": "manager",
+      "password": "hello",
+      "confirm_password": "hello",
+      "admin": "false",
+      "email": "manager@gmail.com",
+      "phone": 12345678,
+      "confirmed": "false",
+      "dp": "../../assets/images/default.png"
     }
   ]
 }

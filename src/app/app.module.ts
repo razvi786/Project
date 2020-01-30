@@ -28,6 +28,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ResetCodeComponent } from './reset-code/reset-code.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UploadDpComponent } from './upload-dp/upload-dp.component';
+import { UpdateStockExchangeComponent } from './update-stock-exchange/update-stock-exchange.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ChangePasswordComponent,
     ResetCodeComponent,
     ResetPasswordComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UploadDpComponent,
+    UpdateStockExchangeComponent
   ],
   imports: [
     BrowserModule,
