@@ -1,6 +1,6 @@
 export class StockExchange{
   id:number;
-  stock_exchange:string;
+  name:string;
   brief:string;
   address:string;
   remarks:string;
