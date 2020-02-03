@@ -20,9 +20,9 @@
           <label for="phone">Mobile Number:</label>
           <input name="phone" formControlName="phone" type="number" class="form-control" placeholder="Your Mobile Number">
 
-          <button class="btn btn-block btn-warning m-3 mx-auto" routerLink="/change-password">Change Password</button>
+          <button class="btn btn-block btn-secondary m-3 mx-auto" routerLink="/change-password">Change Password</button>
 
-          <button class="btn btn-outline-warning text-dark text-center form-control my-3" (click)="updateThisUser()" [disabled]="!updateUser.valid">Update</button>
+          <button class="btn btn-warning text-dark text-center form-control my-3" (click)="updateThisUser()" [disabled]="!updateUser.valid">Update User</button>
         </form>
       </div>
   </div>

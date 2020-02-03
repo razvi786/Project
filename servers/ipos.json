@@ -1,0 +1,24 @@
+{
+  "ipos": [
+    {
+      "id": 125,
+      "company_name": "google",
+      "stock_exchange": "nse",
+      "price_per_share": 1000,
+      "total_shares": 25,
+      "open_date": "2020-02-19",
+      "open_time": "16:30",
+      "remarks": "Top Company"
+    },
+    {
+      "id": 126,
+      "company_name": "apple",
+      "stock_exchange": "bse",
+      "price_per_share": 50000,
+      "total_shares": 100,
+      "open_date": "2020-02-19",
+      "open_time": "18:30",
+      "remarks": "Hurry, limited stock left"
+    }
+  ]
+}

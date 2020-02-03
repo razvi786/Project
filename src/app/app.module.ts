@@ -30,6 +30,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UploadDpComponent } from './upload-dp/upload-dp.component';
 import { UpdateStockExchangeComponent } from './update-stock-exchange/update-stock-exchange.component';
+import { DisplayIposComponent } from './display-ipos/display-ipos.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { UpdateStockExchangeComponent } from './update-stock-exchange/update-sto
     ResetPasswordComponent,
     UserProfileComponent,
     UploadDpComponent,
-    UpdateStockExchangeComponent
+    UpdateStockExchangeComponent,
+    DisplayIposComponent
   ],
   imports: [
     BrowserModule,

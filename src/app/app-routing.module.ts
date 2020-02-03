@@ -23,6 +23,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UploadDpComponent } from './upload-dp/upload-dp.component';
 import { UpdateStockExchangeComponent } from './update-stock-exchange/update-stock-exchange.component';
+import { DisplayIposComponent } from './display-ipos/display-ipos.component';
 
 
 const routes: Routes = [
@@ -48,6 +49,7 @@ const routes: Routes = [
   {path:'user-profile',component:UserProfileComponent},
   {path:'upload-dp',component:UploadDpComponent},
   {path:'update-stock-exchange',component:UpdateStockExchangeComponent},
+  {path:'display-ipos',component:DisplayIposComponent},
 
   {path:'**',component:LandingPageComponent},
 ];
