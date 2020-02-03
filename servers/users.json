@@ -48,6 +48,17 @@
       "admin": "false",
       "email": "manager@gmail.com",
       "phone": 12345678,
+      "confirmed": false,
+      "dp": "../../assets/images/default.png"
+    },
+    {
+      "id": 107,
+      "username": "guru",
+      "password": "pass",
+      "confirm_password": "pwd",
+      "admin": "false",
+      "email": "guru@gmail.com",
+      "phone": 54321,
       "confirmed": "false",
       "dp": "../../assets/images/default.png"
     }
