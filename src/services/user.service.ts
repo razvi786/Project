@@ -31,5 +31,46 @@ export class UserService {
   updateUser(user:User):Observable<User>{
     return this.httpClient.put<User>(this.httpUrl + user.id , user);
   }
+
+  isLoggedIn(){
+    let userId=sessionStorage.getItem("userId");
+    if(userId==null){
+      return false;
+    }else{
+      return true;
+    }
+  }  
+
+  isAdmin():boolean{
+    let admin:boolean;
+    let userId=sessionStorage.getItem("userId");
+    if(userId==null){
+      this.getUserById(+userId).subscribe(data=>{
+        admin=data.admin;
+      });
+      if(admin)
+        return true;
+      else
+        return false;
+    }else{
+      return false;
+    }
+  }
+
+  isActivated():boolean{
+    let activated:boolean;
+    let userId=sessionStorage.getItem("userId");
+    if(userId==null){
+      this.getUserById(+userId).subscribe(data=>{
+        activated=data.admin;
+      });
+      if(activated)
+        return true;
+      else
+        return false;
+    }else{
+      return false;
+    }
+  }
   
 }
