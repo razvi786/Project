@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user';
+import { ErrorService } from '../error.service';
 
 @Component({
   selector: 'app-login-form',
@@ -12,10 +13,9 @@ import { User } from 'src/models/user';
 export class LoginFormComponent implements OnInit {
 
   loginUser:FormGroup;
-
   users:User[];
 
-  constructor(private router:Router,private formbuilder:FormBuilder,private userService:UserService) { }
+  constructor(private router:Router,private formbuilder:FormBuilder,private userService:UserService,private errorService:ErrorService) { }
 
   ngOnInit() {
     this.loginUser=this.formbuilder.group({
@@ -26,7 +26,6 @@ export class LoginFormComponent implements OnInit {
     this.userService.getAllUsers().subscribe(data=>{
       this.users=data;
     });
-
   }
 
   checkLoginUser(){
@@ -42,18 +41,16 @@ export class LoginFormComponent implements OnInit {
     }
     if(flag){
       if(current_user.password == pwd){
+        sessionStorage.removeItem("userId");
+        sessionStorage.setItem("userId",current_user.id.toString());
         this.router.navigate(['/user']);
-        alert('Logged in Successfully.');
       }else{
         alert('Incorrect Password.');
       }
     }else{
       alert('User Not Found.');
     }
-
   }
-
-  
 
 
 }

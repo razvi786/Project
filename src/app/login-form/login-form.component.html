@@ -1,10 +1,14 @@
 <div>
+  <div class="row" *ngIf="isError()">
+    <ul *ngFor="let error of errors">
+        <li class="text-center text-danger bg-light">hello world</li>
+    </ul>
+  </div>
   <div class="row">
       <div class="col-lg-3 col-md-2 col-sm-1"></div>
       <div class="col-lg-6 col-md-8 col-sm-10">
         <form [formGroup]="loginUser" class="form-group border p-3 p-lg-5 border-curved mt-5">
-          <p class="h2 text-muted text-uppercase text-center mb-3 ">Login</p>
-       
+          <p class="h2 text-muted text-uppercase text-center mb-3 ">Login</p>       
 
           <label for="username">Username:</label>
           <input type="text" formControlName="username" class="form-control" placeholder="Your Username">

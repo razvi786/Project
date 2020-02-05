@@ -11,11 +11,11 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.userService.isAdmin()){
+    if(this.userService.isLoggedIn()){
       return true;
     }else{
       this.router.navigate(['/login']);
-      alert("You have no permission to acccess");
+      sessionStorage.removeItem("")
     }
   }
   
