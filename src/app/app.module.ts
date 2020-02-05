@@ -31,6 +31,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UploadDpComponent } from './upload-dp/upload-dp.component';
 import { UpdateStockExchangeComponent } from './update-stock-exchange/update-stock-exchange.component';
 import { DisplayIposComponent } from './display-ipos/display-ipos.component';
+import { ViewIposComponent } from './view-ipos/view-ipos.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { DisplayIposComponent } from './display-ipos/display-ipos.component';
     UserProfileComponent,
     UploadDpComponent,
     UpdateStockExchangeComponent,
-    DisplayIposComponent
+    DisplayIposComponent,
+    ViewIposComponent
   ],
   imports: [
     BrowserModule,

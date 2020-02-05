@@ -24,6 +24,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UploadDpComponent } from './upload-dp/upload-dp.component';
 import { UpdateStockExchangeComponent } from './update-stock-exchange/update-stock-exchange.component';
 import { DisplayIposComponent } from './display-ipos/display-ipos.component';
+import { AuthGuard } from './auth.guard';
+import { ViewIposComponent } from './view-ipos/view-ipos.component';
 
 
 const routes: Routes = [
@@ -42,7 +44,7 @@ const routes: Routes = [
   {path:'import-data' ,component: ImportDataComponent},
   {path:'manage-company' ,component: ManageCompanyComponent },
   {path:'manage-stock-exchange' ,component: ManageStockExchangeComponent },
-  {path:'update-user',component: UpdateUserComponent},
+  {path:'update-user',component: UpdateUserComponent,canActivate:[AuthGuard]},
   {path:'change-password',component: ChangePasswordComponent},
   {path:'reset-code',component:ResetCodeComponent},
   {path:'reset-password',component:ResetPasswordComponent},
@@ -50,6 +52,7 @@ const routes: Routes = [
   {path:'upload-dp',component:UploadDpComponent},
   {path:'update-stock-exchange',component:UpdateStockExchangeComponent},
   {path:'display-ipos',component:DisplayIposComponent},
+  {path:'view-ipos',component:ViewIposComponent},
 
   {path:'**',component:LandingPageComponent},
 ];
