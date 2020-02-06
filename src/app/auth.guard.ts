@@ -15,7 +15,9 @@ export class AuthGuard implements CanActivate {
       return true;
     }else{
       this.router.navigate(['/login']);
-      sessionStorage.removeItem("")
+      // sessionStorage.setItem("error","Please login first to Access this webpage.");
+      alert("Please login first to Access this webpage.");
+      return false;
     }
   }
   

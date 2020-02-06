@@ -22,7 +22,7 @@
     },
     {
       "id": 104,
-      "username": "Syed",
+      "username": "syed",
       "password": "syed143",
       "admin": "false",
       "email": "syed@yahoo.com",
@@ -38,7 +38,8 @@
       "admin": "false",
       "email": "nagasri@cognizant.com",
       "phone": 7777777777,
-      "confirmed": "false"
+      "confirmed": "false",
+      "dp": "../../assets/images/default.png"
     },
     {
       "id": 106,
