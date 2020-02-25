@@ -72,5 +72,9 @@ export class UserService {
       return false;
     }
   }
+
+  // reg():Observable<String>{
+  //   return this.httpClient.get<String>("");
+  // }
   
 }

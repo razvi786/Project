@@ -71,6 +71,12 @@ export class RegisterFormComponent implements OnInit {
     return true;
   }
 
+  // registration(){
+  //   this.userService.reg().subscribe(data=>{
+  //     console.log('Coming status::::'+data.reg);
+  //   })
+  // }
+
   ngOnInit() {
     this.registerUser=this.formBuilder.group({
       id:[],

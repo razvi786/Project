@@ -9,7 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
-import { AddCompanyComponent } from './add-company/add-company.component';
+// import { AddCompanyComponent } from './add-company/add-company.component';
 import { AddStockExchangeComponent } from './add-stock-exchange/add-stock-exchange.component';
 import { DeactivateCompanyComponent } from './deactivate-company/deactivate-company.component';
 import { UpdateCompanyComponent } from './update-company/update-company.component';
@@ -41,7 +41,7 @@ import { ViewIposComponent } from './view-ipos/view-ipos.component';
     LandingPageComponent,
     AdminPageComponent,
     UserPageComponent,
-    AddCompanyComponent,
+    // AddCompanyComponent,
     AddStockExchangeComponent,
     DeactivateCompanyComponent,
     UpdateCompanyComponent,
