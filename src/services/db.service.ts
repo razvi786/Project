@@ -8,24 +8,24 @@ export class DbService {
 
   constructor(private httpClient:HttpClient) { }
 
-  serUpdateUser(obj){
-    return this.httpClient.post("userref/updateuser",obj).pipe(map((res:any)=>{
-      if(res.err)
-      this.tokenError()
-      else
-      return (res)
-    }))
-  }
+  // serUpdateUser(obj){
+  //   return this.httpClient.post("userref/updateuser",obj).pipe(map((res:any)=>{
+  //     if(res.err)
+  //     this.tokenError()
+  //     else
+  //     return (res)
+  //   }))
+  // }
 
-  serActivation(obj){
-    return this.httpClient.post("userref/activateuser",obj)
-  }
+  // serActivation(obj){
+  //   return this.httpClient.post("userref/activateuser",obj)
+  // }
 
-  sergetNewArrivals(){
-    return this.httpClient.post("productdetails/getnewarrival")
-  }
+  // sergetNewArrivals(){
+  //   return this.httpClient.post("productdetails/getnewarrival")
+  // }
 
-  sergetFastSelling(){
-    return this.httpClient.post("productdetails/getfastselling")
-  }
+  // sergetFastSelling(){
+  //   return this.httpClient.post("productdetails/getfastselling")
+  // }
 }

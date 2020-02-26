@@ -8,7 +8,7 @@ import { User } from 'src/models/user';
 })
 export class UserService {
 
-  httpUrl="http://localhost:3001/users/";
+  httpUrl="http://localhost:8080/user/";
 
   constructor(private httpClient:HttpClient) { }
 
@@ -29,7 +29,7 @@ export class UserService {
   }
 
   updateUser(user:User):Observable<User>{
-    return this.httpClient.put<User>(this.httpUrl + user.id , user);
+    return this.httpClient.put<User>(this.httpUrl , user);
   }
 
   isLoggedIn(){

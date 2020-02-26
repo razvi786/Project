@@ -9,6 +9,8 @@
     </div>
     <div class="row justify-content-center">
         <p class="welcome-text text-center">Welcome to <span class="font-weight-bold">Stock Market Charting</span></p>
+        <p [style.color]="color" (click)="click()">{{message}}</p>
+        <input type="text" [(ngModel)]="message">
       </div>
 
       <div class="col-sm-12 col-lg-9 m-auto">
