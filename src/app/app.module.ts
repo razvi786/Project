@@ -32,6 +32,7 @@ import { UploadDpComponent } from './upload-dp/upload-dp.component';
 import { UpdateStockExchangeComponent } from './update-stock-exchange/update-stock-exchange.component';
 import { DisplayIposComponent } from './display-ipos/display-ipos.component';
 import { ViewIposComponent } from './view-ipos/view-ipos.component';
+import { ValidateComponent } from './validate/validate.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { ViewIposComponent } from './view-ipos/view-ipos.component';
     UploadDpComponent,
     UpdateStockExchangeComponent,
     DisplayIposComponent,
-    ViewIposComponent
+    ViewIposComponent,
+    ValidateComponent
   ],
   imports: [
     BrowserModule,

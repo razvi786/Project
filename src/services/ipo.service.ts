@@ -10,7 +10,9 @@ import { Observable } from 'rxjs';
 })
 export class IPOService {
 
-  httpUrl="http://localhost:3003/ipos/";
+  port:number=8080;
+
+  httpUrl="http://localhost:"+this.port+"/ipo/";
 
   constructor(private httpClient:HttpClient) { }
 
@@ -23,7 +25,7 @@ export class IPOService {
   }
 
   updateIPO(ipo:IPO):Observable<IPO>{
-    return this.httpClient.put<IPO>(this.httpUrl + ipo.id, ipo);
+    return this.httpClient.put<IPO>(this.httpUrl, ipo);
   }
 
   getAllIPOs():Observable<IPO[]>{

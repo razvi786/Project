@@ -9,7 +9,9 @@ import { Observable } from 'rxjs';
 
 export class CompanyService {
 
-  httpUrl="http://localhost:3000/companies/";
+  port:number=8080
+
+  httpUrl="http://localhost:"+this.port+"/company/";
 
   constructor(private httpClient:HttpClient) { }
 
@@ -30,7 +32,7 @@ export class CompanyService {
   }
 
   updateCompany(company:Company):Observable<Company>{
-    return this.httpClient.put<Company>(this.httpUrl + company.id,company);
+    return this.httpClient.put<Company>(this.httpUrl, company);
   }
 
 }

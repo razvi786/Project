@@ -87,7 +87,8 @@ export class RegisterFormComponent implements OnInit {
       email: ['',[Validators.required,Validators.email]],
       phone: ['',Validators.required],
       confirmed: ['false'],
-      dp: ['../../assets/images/default.png']
+      dp: ['../../assets/images/default.png'],
+      code: Math.random()*1000000
     });
 
     this.userService.getAllUsers().subscribe(data=>{

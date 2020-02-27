@@ -26,6 +26,7 @@ import { UpdateStockExchangeComponent } from './update-stock-exchange/update-sto
 import { DisplayIposComponent } from './display-ipos/display-ipos.component';
 import { AuthGuard } from './auth.guard';
 import { ViewIposComponent } from './view-ipos/view-ipos.component';
+import { ValidateComponent } from './validate/validate.component';
 
 
 const routes: Routes = [
@@ -53,6 +54,7 @@ const routes: Routes = [
   {path:'update-stock-exchange',component:UpdateStockExchangeComponent,canActivate:[AuthGuard]},
   {path:'display-ipos',component:DisplayIposComponent,canActivate:[AuthGuard]},
   {path:'view-ipos',component:ViewIposComponent,canActivate:[AuthGuard]},
+  {path:'user/activate',component:ValidateComponent},
 
   {path:'**',component:LandingPageComponent},
 ];

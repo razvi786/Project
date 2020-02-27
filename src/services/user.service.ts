@@ -24,6 +24,10 @@ export class UserService {
     return this.httpClient.get<User>(this.httpUrl + id);
   }
 
+  getUserByCode(code:number):Observable<User>{
+    return this.httpClient.get<User>(this.httpUrl + "activate/" + code);
+  }
+
   getAllUsers():Observable<User[]>{
     return this.httpClient.get<User[]>(this.httpUrl);
   }

@@ -9,9 +9,9 @@ export class LandingPageComponent implements OnInit {
 
   constructor() { }
 
-  message:string;
-  color:string;
-  twoway:string;
+  // message:string;
+  // color:string;
+  // twoway:string;
 
   click(){
     alert('Kaise ho?')
@@ -22,9 +22,9 @@ export class LandingPageComponent implements OnInit {
       interval: 3000
     })
 
-    this.message="Jumme Raat"
-    this.color="red"
-    this.message=this.twoway
+    // this.message="Jumme Raat"
+    // this.color="red"
+    // this.message=this.twoway
   }
 
 }
