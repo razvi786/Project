@@ -33,6 +33,7 @@ import { UpdateStockExchangeComponent } from './update-stock-exchange/update-sto
 import { DisplayIposComponent } from './display-ipos/display-ipos.component';
 import { ViewIposComponent } from './view-ipos/view-ipos.component';
 import { ValidateComponent } from './validate/validate.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { ValidateComponent } from './validate/validate.component';
     UpdateStockExchangeComponent,
     DisplayIposComponent,
     ViewIposComponent,
-    ValidateComponent
+    ValidateComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

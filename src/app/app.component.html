@@ -13,20 +13,20 @@
                 <li class="nav-item active">
                     <a routerLink="" class="nav-link text-center">Home</a>
                 </li>
-                <li class="nav-item">
+                <li *ngIf="!userService.isLoggedIn()" class="nav-item">
                     <a routerLink="login" class="nav-link text-center">Login</a>
                 </li>
-                <li class="nav-item">
+                <li *ngIf="!userService.isLoggedIn()" class="nav-item">
                     <a routerLink="register" class="nav-link text-center">Register</a>
                 </li>
-                <li class="nav-item">
+                <li *ngIf="userService.isAdmin()" class="nav-item">
                     <a routerLink="admin" class="nav-link text-center">Admin</a>
                 </li>
-                <li class="nav-item">
+                <li *ngIf="userService.isLoggedIn()" class="nav-item">
                     <a routerLink="user" class="nav-link text-danger text-center">User</a>
                 </li>
-                <li class="nav-item">
-                    <a routerLink="" class="nav-link text-danger text-center">Logout</a>
+                <li *ngIf="userService.isLoggedIn()" class="nav-item">
+                    <a routerLink="/logout" class="nav-link text-danger text-center">Logout</a>
                 </li>
             </ul>
         </div>

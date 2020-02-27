@@ -48,7 +48,7 @@ export class UserService {
   isAdmin():boolean{
     let admin:boolean;
     let userId=sessionStorage.getItem("userId");
-    if(userId==null){
+    if(userId!=null){
       this.getUserById(+userId).subscribe(data=>{
         admin=data.admin;
       });

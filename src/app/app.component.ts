@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ErrorService } from './error.service';
+import { UserService } from 'src/services/user.service';
 
 
 @Component({
@@ -8,4 +9,5 @@ import { ErrorService } from './error.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private userService:UserService){}
 }

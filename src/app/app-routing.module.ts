@@ -27,6 +27,7 @@ import { DisplayIposComponent } from './display-ipos/display-ipos.component';
 import { AuthGuard } from './auth.guard';
 import { ViewIposComponent } from './view-ipos/view-ipos.component';
 import { ValidateComponent } from './validate/validate.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 const routes: Routes = [
@@ -55,6 +56,7 @@ const routes: Routes = [
   {path:'display-ipos',component:DisplayIposComponent,canActivate:[AuthGuard]},
   {path:'view-ipos',component:ViewIposComponent,canActivate:[AuthGuard]},
   {path:'user/activate',component:ValidateComponent},
+  {path:'logout',component:LogoutComponent},
 
   {path:'**',component:LandingPageComponent},
 ];
