@@ -37,7 +37,7 @@ export class UserService {
   }
 
   isLoggedIn(){
-    let userId=sessionStorage.getItem("userId");
+    let userId=localStorage.getItem("userId");
     if(userId==null){
       return false;
     }else{
@@ -47,15 +47,13 @@ export class UserService {
 
   isAdmin():boolean{
     let admin:boolean;
-    let userId=sessionStorage.getItem("userId");
+    let userId=localStorage.getItem("userId");
     if(userId!=null){
-      this.getUserById(+userId).subscribe(data=>{
-        admin=data.admin;
-      });
-      if(admin)
-        return true;
-      else
+      if(+userId==97){
+        return true
+      }else{
         return false;
+      }
     }else{
       return false;
     }
@@ -63,7 +61,7 @@ export class UserService {
 
   isActivated():boolean{
     let activated:boolean;
-    let userId=sessionStorage.getItem("userId");
+    let userId=localStorage.getItem("userId");
     if(userId==null){
       this.getUserById(+userId).subscribe(data=>{
         activated=data.admin;
