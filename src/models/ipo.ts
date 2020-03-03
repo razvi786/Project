@@ -4,7 +4,6 @@ export class IPO{
     stock_exchange:string;
     price_per_share:number;
     total_shares:number;
-    open_date:string;
-    open_time:string;
+    open_date_time:Date;
     remarks:string;
 }

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class StockExchangeService {
 
-  port:number=8080
+  port:number=8004
 
   httpUrl="http://localhost:"+this.port+"/stock-exchange/";
 

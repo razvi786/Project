@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class SectorService {
 
-  port:number=8080;
+  port:number=8003;
 
   httpUrl="http://localhost:"+this.port+"/sector/";
 

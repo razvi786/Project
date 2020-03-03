@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class IPOService {
 
-  port:number=8080;
+  port:number=8002;
 
   httpUrl="http://localhost:"+this.port+"/ipo/";
 

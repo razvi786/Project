@@ -43,7 +43,11 @@ export class LoginFormComponent implements OnInit {
       if(current_user.password == pwd){
         localStorage.removeItem("userId");
         localStorage.setItem("userId",current_user.id.toString());
-        this.router.navigate(['/user']);
+        if(this.userService.isAdmin()){
+          this.router.navigate(['/admin']);
+        }else{
+          this.router.navigate(['/user']);
+        }
       }else{
         alert('Incorrect Password.');
       }

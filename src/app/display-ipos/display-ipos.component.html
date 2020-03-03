@@ -8,8 +8,7 @@
       <th>Stock Exchange</th>
       <th>Price Per Share</th>
       <th>Total Shares</th>
-      <th>Open Date</th>
-      <th>Open Time</th>
+      <th>Open Date Time</th>
       <th>Remarks</th>
       <th>Actions</th>
     </thead>
@@ -19,8 +18,7 @@
       <td>{{ipo.stock_exchange}}</td>
       <td>{{ipo.price_per_share}}</td>
       <td>{{ipo.total_shares}}</td>
-      <td>{{ipo.open_date}}</td>
-      <td>{{ipo.open_time}}</td>
+      <td>{{ipo.open_date_time | date:'MMMM d, y \'at\' h:mm:ss a'}}</td>
       <td>{{ipo.remarks}}</td>
       <td>
         <button class="btn btn-warning mx-auto m-2" (click)="updateIpo(ipo)">Update</button>

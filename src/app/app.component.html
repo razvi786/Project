@@ -23,7 +23,7 @@
                     <a routerLink="admin" class="nav-link text-center">Admin</a>
                 </li>
                 <li *ngIf="userService.isLoggedIn()" class="nav-item">
-                    <a routerLink="user" class="nav-link text-danger text-center">User</a>
+                    <a routerLink="user" class="nav-link text-center">User</a>
                 </li>
                 <li *ngIf="userService.isLoggedIn()" class="nav-item">
                     <a routerLink="/logout" class="nav-link text-danger text-center">Logout</a>
@@ -42,6 +42,13 @@
           </div> -->
         <router-outlet></router-outlet>
         
+        <div class="text-center">
+            <p class="text-danger lead">Please Do Not Waste Food</p>
+            <iframe height='100' src='https://www.theworldcounts.com/embed/challenges/107?background_color=white&color=black&font_family=%22Helvetica+Neue%22%2C+Arial%2C+sans-serif&font_size=14' style='border: none' width='300'></iframe>
+            <iframe height='100' src='https://www.theworldcounts.com/embed/challenges/2?background_color=white&color=black&font_family=%22Helvetica+Neue%22%2C+Arial%2C+sans-serif&font_size=14' style='border: none' width='300'></iframe>
+            <iframe height='100' src='https://www.theworldcounts.com/embed/challenges/112?background_color=white&color=black&font_family=%22Helvetica+Neue%22%2C+Arial%2C+sans-serif&font_size=14' style='border: none' width='300'></iframe>
+          </div>
+
     </div>
 </main>
 

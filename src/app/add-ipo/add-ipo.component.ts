@@ -21,8 +21,7 @@ export class AddIpoComponent implements OnInit {
       stock_exchange:['bse',Validators.required],
       price_per_share:['',Validators.required],
       total_shares:['',Validators.required],
-      open_date:['',Validators.required],
-      open_time:['',Validators.required],
+      open_date_time:['',Validators.required],
       remarks:['']
     });
   }

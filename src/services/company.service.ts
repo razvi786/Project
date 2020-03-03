@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 
 export class CompanyService {
 
-  port:number=8080
+  port:number=8001
 
   httpUrl="http://localhost:"+this.port+"/company/";
 
