@@ -28,6 +28,7 @@ import { AuthGuard } from './auth.guard';
 import { ViewIposComponent } from './view-ipos/view-ipos.component';
 import { ValidateComponent } from './validate/validate.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AddStockPriceComponent } from './add-stock-price/add-stock-price.component';
 
 
 const routes: Routes = [
@@ -57,6 +58,7 @@ const routes: Routes = [
   {path:'view-ipos',component:ViewIposComponent,canActivate:[AuthGuard]},
   {path:'user/activate',component:ValidateComponent},
   {path:'logout',component:LogoutComponent},
+  {path:'add-stock-price',component:AddStockPriceComponent},
 
   {path:'**',component:LandingPageComponent},
 ];

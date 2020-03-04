@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <form [formGroup]="addSP" (ngSubmit)="addSp()" class="form-group border p-5 border-curved mt-5">
+        <p class="h2 text-muted text-uppercase text-center mb-4">Stock Price</p>
+  
+        <label for="stock_exchange">Stock Exchange:</label>
+        <select class="form-control" formControlName="stock_exchange" *ngFor="let se of stock_exchanges" [(ngModel)]="selected_stock_exchange">
+            <option selected value="" disabled>Select Stock Exchange</option>
+            <option value="{{se.name}}">{{se.name}}</option>
+        </select>
+
+        <button (click)="test()">Click me</button>
+
+        <label for="company_code">Company Code:</label>
+        <select class="form-control" formControlName="company_code" *ngFor="let c of companies">
+            <option value="{{c.name}}">{{c.name}}</option>
+        </select>
+
+        <label for="date">Date:</label>
+        <input type="date" class="form-control" placeholder="Date" formControlName="date">
+
+        <label for="time">Time:</label>
+        <input type="time" class="form-control" placeholder="Time" formControlName="time">
+
+        <label for="current_price">Current Price:</label>
+        <input type="number" class="form-control" placeholder="Current Price" formControlName="current_price">
+  
+        <button class="btn btn-outline-success text-dark text-center form-control" [disabled]="!addSP.valid">Add Stock Price</button>
+      </form>
+    </div>
+  </div>
