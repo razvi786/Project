@@ -36,7 +36,7 @@ export class AddStockPriceComponent implements OnInit {
     this.companyService.getAllCompanies().subscribe(c=>{
       this.companies=c;
     })
-    this.selected_stock_exchange=this.stock_exchanges[0].name;
+    this.selected_stock_exchange="";
   }
 
   test(){
@@ -46,6 +46,7 @@ export class AddStockPriceComponent implements OnInit {
   }
 
   addSp(){
+    console.log(this.addSP.value);
     this.spService.saveStockPrice(this.addSP.value).subscribe(data=>{
       alert('Stock Price Inserted Successfully.');
       // this.router.navigate(['/manage-stock-exchange']);

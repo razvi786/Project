@@ -35,6 +35,7 @@ import { ViewIposComponent } from './view-ipos/view-ipos.component';
 import { ValidateComponent } from './validate/validate.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AddStockPriceComponent } from './add-stock-price/add-stock-price.component';
+import { AddCompanyComponent } from './add-company/add-company.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { AddStockPriceComponent } from './add-stock-price/add-stock-price.compon
     ViewIposComponent,
     ValidateComponent,
     LogoutComponent,
-    AddStockPriceComponent
+    AddStockPriceComponent,
+    AddCompanyComponent
   ],
   imports: [
     BrowserModule,

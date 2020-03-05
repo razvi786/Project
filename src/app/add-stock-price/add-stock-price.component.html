@@ -5,16 +5,15 @@
         <p class="h2 text-muted text-uppercase text-center mb-4">Stock Price</p>
   
         <label for="stock_exchange">Stock Exchange:</label>
-        <select class="form-control" formControlName="stock_exchange" *ngFor="let se of stock_exchanges" [(ngModel)]="selected_stock_exchange">
-            <option selected value="" disabled>Select Stock Exchange</option>
-            <option value="{{se.name}}">{{se.name}}</option>
+        <select class="form-control" formControlName="stock_exchange"  [(ngModel)]="selected_stock_exchange">
+            <option value="" disabled selected>Select Stock Exchange</option>
+            <option *ngFor="let se of stock_exchanges" value="{{se.name}}">{{se.name}}</option>
         </select>
 
-        <button (click)="test()">Click me</button>
-
         <label for="company_code">Company Code:</label>
-        <select class="form-control" formControlName="company_code" *ngFor="let c of companies">
-            <option value="{{c.name}}">{{c.name}}</option>
+        <select class="form-control" formControlName="company_code">
+            <option value="" selected disabled>Select Company code</option>
+            <option *ngFor="let c of companies" value="{{c.name}}">{{c.name}}</option>
         </select>
 
         <label for="date">Date:</label>
@@ -26,7 +25,7 @@
         <label for="current_price">Current Price:</label>
         <input type="number" class="form-control" placeholder="Current Price" formControlName="current_price">
   
-        <button class="btn btn-outline-success text-dark text-center form-control" [disabled]="!addSP.valid">Add Stock Price</button>
+        <button class="btn btn-outline-success text-dark text-center form-control mt-3" [disabled]="!addSP.valid">Add Stock Price</button>
       </form>
     </div>
   </div>

@@ -29,6 +29,7 @@ import { ViewIposComponent } from './view-ipos/view-ipos.component';
 import { ValidateComponent } from './validate/validate.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AddStockPriceComponent } from './add-stock-price/add-stock-price.component';
+import { AddCompanyComponent } from './add-company/add-company.component';
 
 
 const routes: Routes = [
@@ -37,7 +38,7 @@ const routes: Routes = [
   {path:'admin',component:AdminPageComponent,canActivate:[AuthGuard]},
   {path:'user',component:UserPageComponent,canActivate:[AuthGuard]},
   {path:'display-users',component:DisplayUsersComponent,canActivate:[AuthGuard]},
-  // {path:'add-company' ,component: AddCompanyComponent,canActivate:[AuthGuard]},
+  {path:'add-company' ,component: AddCompanyComponent,canActivate:[AuthGuard]},
   {path:'add-stock-exchange' ,component: AddStockExchangeComponent,canActivate:[AuthGuard]},
   {path:'add-ipo' ,component: AddIpoComponent,canActivate:[AuthGuard]},
   {path:'deactivate-company' ,component: DeactivateCompanyComponent,canActivate:[AuthGuard]},

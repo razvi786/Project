@@ -16,6 +16,7 @@ export class AddCompanyComponent implements OnInit {
   constructor(private formBuilder:FormBuilder,private companyService:CompanyService,private router:Router) { }
 
   addCompany(){
+    
     this.companyService.saveCompany(this.registerCompany.value).subscribe(data=>{
       alert("company added successfully");
       this.router.navigate(['/manage-company']);
@@ -28,8 +29,8 @@ export class AddCompanyComponent implements OnInit {
       name:['',Validators.required],
       turnover:['',Validators.required],
       ceo:['',Validators.required],
-      board_of_directors:['',Validators.required],
-      listed_in_stock_exchanges:['',Validators.required],
+      board_of_directors:[''],
+      listed_in_stock_exchanges:[''],
       sector:['',Validators.required],
       brief:['',Validators.required],
       stock_code:['',Validators.required],
