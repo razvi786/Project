@@ -4,6 +4,7 @@ import { Company } from 'src/models/company';
 import { User } from 'src/models/user';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+declare var $: any;
 
 @Component({
   selector: 'app-manage-company',
@@ -12,41 +13,43 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ManageCompanyComponent implements OnInit {
 
-  constructor(private companyService:CompanyService,private router:Router) { }
+  constructor(private companyService: CompanyService, private router: Router) { }
 
-  companies:Company[];
+  companies: Company[];
 
-  updateFormGroup:FormGroup;
+  updateFormGroup: FormGroup;
 
-  selectedCompany:Company;
+  selectedCompany: Company;
+
+  message: string;
 
   ngOnInit() {
 
     this.companyService.getAllCompanies().subscribe(data => {
-      this.companies=data;
+      this.companies = data;
     })
 
   }
 
-  updateCompany(company:Company){
+  updateCompany(company: Company) {
     localStorage.removeItem('companyId');
-    localStorage.setItem('companyId',company.id.toString());
+    localStorage.setItem('companyId', company.id.toString());
     this.router.navigate(['/update-company']);
   }
 
-  deactivateCompany(company:Company){
-    localStorage.removeItem('companyId');
-    localStorage.setItem('companyId',company.id.toString());
+  deactivateCompany(company: Company) {
+    company.activated = false;
+    this.companyService.updateCompany(company).subscribe(c => {
+      this.message = "Company Deactivated Successfully"
+      $('#alert').modal('show')
+    })
   }
 
-  deactivateThisCompany(){
-    const id=+localStorage.getItem('companyId');
-    this.companyService.getCompanyById(id).subscribe(company=>{
-      company.activated=false;
-      this.companyService.updateCompany(company).subscribe(c=>{
-        
-        alert('Company Deactivated Successfully');
-      })
+  activateCompany(company: Company) {
+    company.activated = true;
+    this.companyService.updateCompany(company).subscribe(c => {
+      this.message = "Company Activated Successfully"
+      $('#alert').modal('show')
     })
   }
 

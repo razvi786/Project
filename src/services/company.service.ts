@@ -9,9 +9,10 @@ import { Observable } from 'rxjs';
 
 export class CompanyService {
 
-  port:number=8001
+  server: string = "http://192.168.1.22"
+  port: number = 8001
 
-  httpUrl="http://localhost:"+this.port+"/company/";
+  httpUrl = this.server + ":" + this.port + "/company/";
 
   constructor(private httpClient:HttpClient) { }
 

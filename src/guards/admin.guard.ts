@@ -6,19 +6,18 @@ import { UserService } from 'src/services/user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
   constructor(private userService:UserService,private router:Router){}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.userService.isLoggedIn()){
-      return true;
-    }else{
-      this.router.navigate(['/login']);
-      // sessionStorage.setItem("error","Please login first to Access this webpage.");
-      alert("Please login first to Access this webpage.");
-      return false;
-    }
+      if(this.userService.isAdmin()){
+        return true;
+      }else{
+        this.router.navigate(['/user']);
+        alert("You are not Authorized to access this page");
+        return false;
+      }
   }
   
 }

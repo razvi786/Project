@@ -25,6 +25,9 @@
                 <li *ngIf="userService.isLoggedIn()" class="nav-item">
                     <a routerLink="user" class="nav-link text-center">User</a>
                 </li>
+                <li class="nav-item">
+                    <a routerLink="/contact-us" class="nav-link text-center">Contact Us</a>
+                </li>
                 <li *ngIf="userService.isLoggedIn()" class="nav-item">
                     <a routerLink="/logout" class="nav-link text-danger text-center">Logout</a>
                 </li>

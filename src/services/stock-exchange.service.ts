@@ -8,9 +8,10 @@ import { Observable } from 'rxjs';
 })
 export class StockExchangeService {
 
-  port:number=8004
+  server: string = "http://192.168.1.22"
+  port: number = 8004
 
-  httpUrl="http://localhost:"+this.port+"/stock-exchange/";
+  httpUrl = this.server + ":" + this.port + "/stock-exchange/";
 
   constructor(private httpClient:HttpClient) { }
 
@@ -28,6 +29,10 @@ export class StockExchangeService {
 
   updateStockExchange(stockExchange:StockExchange):Observable<StockExchange>{
     return this.httpClient.put<StockExchange>(this.httpUrl, stockExchange);
+  }
+
+  removeStockExchange(id:number):Observable<StockExchange>{
+    return this.httpClient.delete<StockExchange>(this.httpUrl + id);
   }
 
 }

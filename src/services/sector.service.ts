@@ -8,9 +8,10 @@ import { Observable } from 'rxjs';
 })
 export class SectorService {
 
-  port:number=8003;
+  server: string = "http://192.168.1.22"
+  port: number = 8003
 
-  httpUrl="http://localhost:"+this.port+"/sector/";
+  httpUrl = this.server + ":" + this.port + "/sector/";
 
   constructor(private httpClient:HttpClient){ }
 
@@ -18,6 +19,20 @@ export class SectorService {
     return this.httpClient.post<Sector>(this.httpUrl, sector)
   }
 
-  
+  removeSector(id:number):Observable<Sector>{
+    return this.httpClient.delete<Sector>(this.httpUrl + id);
+  }
+
+  getSectorById(id:number):Observable<Sector>{
+    return this.httpClient.get<Sector>(this.httpUrl + id);
+  }
+
+  getAllSectors():Observable<Sector[]>{
+    return this.httpClient.get<Sector[]>(this.httpUrl);
+  }
+
+  updateSector(sector:Sector):Observable<Sector>{
+    return this.httpClient.put<Sector>(this.httpUrl , sector);
+  }
 
 }

@@ -4,7 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user';
 import { ErrorService } from '../error.service';
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
+declare var $:any;
 
 @Component({
   selector: 'app-login-form',
@@ -53,13 +54,16 @@ export class LoginFormComponent implements OnInit {
             this.router.navigate(['/user']);
           }
         } else {
-          alert("User is not activated")
+          this.message="Please Activate Your Account";
+          $('#alert').modal('show');
         }
       } else {
-        alert('Incorrect Password.');
+        this.message="Incorrect Password";
+        $('#alert').modal('show');
       }
     } else {
-      alert('User Not Found.');
+      this.message="User Not Found";
+      $('#alert').modal('show');
     }
   }
 

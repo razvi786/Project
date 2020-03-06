@@ -10,9 +10,10 @@ import { Observable } from 'rxjs';
 })
 export class IPOService {
 
-  port:number=8002;
+  server: string = "http://192.168.1.22"
+  port: number = 8002
 
-  httpUrl="http://localhost:"+this.port+"/ipo/";
+  httpUrl = this.server + ":" + this.port + "/ipo/";
 
   constructor(private httpClient:HttpClient) { }
 

@@ -9,13 +9,16 @@
       <input type="text" name="name" formControlName="name" class="form-control" placeholder="Name of Company">
 
       <label for="turnover">Turnover:</label>
-      <input type="text" name="turnover" formControlName="turnover" class="form-control" placeholder="Company Turnover">
+      <input type="number" name="turnover" formControlName="turnover" class="form-control" placeholder="Company Turnover">
 
       <label for="ceo">CEO:</label>
       <input type="text" name="ceo" formControlName="ceo" class="form-control" placeholder="CEO of Company">
-
-      <label for="board-of-directors">Board of Director:</label>
-      <input type="text" name="board-of-directors" formControlName="board_of_directors" class="form-control mb-4" placeholder="Board of Director of Company">
+      
+          <label for="board-of-directors">Board of Director:</label>
+          <button (click)="addItem()" class="btn btn-secondary ml-5"><i class="fa fa-plus"></i></button>
+        <div>
+          <input id="board-of-directors" type="text" name="board-of-directors"  class="form-control mb-4" placeholder="Board of Director of Company">
+        </div>
 
       <label for="listed-in-stock-exchanges">Listed in Stock Exchanges:</label><br>
       <small class="text-info">Hold [Ctrl] to Select Multiple Stock Exchanges</small>
@@ -35,5 +38,21 @@
 
       <button type="submit" class="btn btn-outline-success text-dark text-center form-control" (click)="addCompany()" [disabled]="!registerCompany.valid">Add Company</button>
     </form>
+  </div>
+</div>
+
+<div id="alert" class="modal fade" tabindex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-body text-center">
+          {{message}}
+        </h5>
+        <button class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-block btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>

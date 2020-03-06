@@ -8,9 +8,10 @@ import { StockPrice } from 'src/models/stock-price';
 })
 export class StockPriceService {
 
-  port:number=8005
+  server: string = "http://192.168.1.22"
+  port: number = 8005
 
-  httpUrl="http://localhost:"+this.port+"/stock-price/";
+  httpUrl = this.server + ":" + this.port + "/stock-price/";
 
   constructor(private httpClient:HttpClient) { }
 

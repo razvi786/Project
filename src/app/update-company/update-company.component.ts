@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { CompanyService } from 'src/services/company.service';
 import { Router } from '@angular/router';
 
@@ -21,7 +21,7 @@ export class UpdateCompanyComponent implements OnInit {
       name:['',Validators.required],
       turnover:['',Validators.required],
       ceo:['',Validators.required],
-      board_of_directors:['',Validators.required],
+      board_of_directors:[],
       listed_in_stock_exchanges:['',Validators.required],
       sector:['',Validators.required],
       brief:['',Validators.required],

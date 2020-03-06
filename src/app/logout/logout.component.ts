@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+declare var $:any;
 
 @Component({
   selector: 'app-logout',
@@ -10,10 +11,12 @@ export class LogoutComponent implements OnInit {
 
   constructor(private router:Router) { }
 
+  message:string;
+
   ngOnInit() {
     localStorage.removeItem("userId")
-    alert("Logged out Successfully")
-    this.router.navigate(['/login']);
+    this.message="Logged out Successfully"
+    $('#alert').modal('show')
   }
 
 }

@@ -8,9 +8,10 @@ import { User } from 'src/models/user';
 })
 export class UserService {
 
-  port: number = 8000
+  server: string = "http://192.168.1.22"
+  port: number = 8009
 
-  httpUrl = "http://localhost:" + this.port + "/user/";
+  httpUrl = this.server + ":" + this.port + "/user/";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -50,18 +51,11 @@ export class UserService {
   isAdmin(): boolean {
     let admin: boolean;
     let userId = localStorage.getItem("userId");
-    if (userId != null) {
-      this.getUserById(+userId).subscribe(data => {
-        admin = data.admin;
-      });
-      if (admin) {
+      if (+userId==2 || +userId==97) {
         return true
       } else {
         return false;
       }
-    } else {
-      return false;
-    }
   }
 
   isActivated(): boolean {
@@ -87,6 +81,13 @@ export class UserService {
       return false;
 
   }
+
+  // isUserAdmin(user: User): boolean {
+  //   if (user.admin)
+  //     return true;
+  //   else
+  //     return false;
+  // }
 
   // reg():Observable<String>{
   //   return this.httpClient.get<String>("");

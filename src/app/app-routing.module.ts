@@ -24,42 +24,47 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UploadDpComponent } from './upload-dp/upload-dp.component';
 import { UpdateStockExchangeComponent } from './update-stock-exchange/update-stock-exchange.component';
 import { DisplayIposComponent } from './display-ipos/display-ipos.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from '../guards/auth.guard';
 import { ViewIposComponent } from './view-ipos/view-ipos.component';
 import { ValidateComponent } from './validate/validate.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AddStockPriceComponent } from './add-stock-price/add-stock-price.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AdminGuard } from 'src/guards/admin.guard';
+import { LoginGuard } from 'src/guards/login.guard';
+import { LogoutGuard } from 'src/guards/logout.guard';
 
 
 const routes: Routes = [
   {path:'login',component:LoginFormComponent},
   {path:'register',component:RegisterFormComponent},
-  {path:'admin',component:AdminPageComponent,canActivate:[AuthGuard]},
-  {path:'user',component:UserPageComponent,canActivate:[AuthGuard]},
-  {path:'display-users',component:DisplayUsersComponent,canActivate:[AuthGuard]},
-  {path:'add-company' ,component: AddCompanyComponent,canActivate:[AuthGuard]},
-  {path:'add-stock-exchange' ,component: AddStockExchangeComponent,canActivate:[AuthGuard]},
-  {path:'add-ipo' ,component: AddIpoComponent,canActivate:[AuthGuard]},
-  {path:'deactivate-company' ,component: DeactivateCompanyComponent,canActivate:[AuthGuard]},
-  {path:'reset' ,component: ResetComponent },
-  {path:'update-ipo' ,component: UpdateIpoComponent,canActivate:[AuthGuard]},
-  {path:'update-company' ,component: UpdateCompanyComponent,canActivate:[AuthGuard]},
-  {path:'import-data' ,component: ImportDataComponent,canActivate:[AuthGuard]},
-  {path:'manage-company' ,component: ManageCompanyComponent,canActivate:[AuthGuard]},
-  {path:'manage-stock-exchange' ,component: ManageStockExchangeComponent,canActivate:[AuthGuard]},
-  {path:'update-user',component: UpdateUserComponent,canActivate:[AuthGuard]},
-  {path:'change-password',component: ChangePasswordComponent,canActivate:[AuthGuard]},
-  {path:'reset-code',component:ResetCodeComponent},
-  {path:'reset-password',component:ResetPasswordComponent},
-  {path:'user-profile',component:UserProfileComponent},
-  {path:'upload-dp',component:UploadDpComponent,canActivate:[AuthGuard]},
-  {path:'update-stock-exchange',component:UpdateStockExchangeComponent,canActivate:[AuthGuard]},
-  {path:'display-ipos',component:DisplayIposComponent,canActivate:[AuthGuard]},
-  {path:'view-ipos',component:ViewIposComponent,canActivate:[AuthGuard]},
-  {path:'user/activate',component:ValidateComponent},
+  {path:'admin',component:AdminPageComponent,canActivate:[AdminGuard]},
+  {path:'user',component:UserPageComponent,canActivate:[LoginGuard]},
+  {path:'display-users',component:DisplayUsersComponent,canActivate:[AdminGuard]},
+  {path:'add-company' ,component: AddCompanyComponent,canActivate:[AdminGuard]},
+  {path:'add-stock-exchange' ,component: AddStockExchangeComponent,canActivate:[AdminGuard]},
+  {path:'add-ipo' ,component: AddIpoComponent,canActivate:[AdminGuard]},
+  {path:'deactivate-company' ,component: DeactivateCompanyComponent,canActivate:[AdminGuard]},
+  {path:'reset' ,component: ResetComponent,canActivate:[LogoutGuard] },
+  {path:'update-ipo' ,component: UpdateIpoComponent,canActivate:[AdminGuard]},
+  {path:'update-company' ,component: UpdateCompanyComponent,canActivate:[AdminGuard]},
+  {path:'import-data' ,component: ImportDataComponent,canActivate:[AdminGuard]},
+  {path:'manage-company' ,component: ManageCompanyComponent,canActivate:[AdminGuard]},
+  {path:'manage-stock-exchange' ,component: ManageStockExchangeComponent,canActivate:[AdminGuard]},
+  {path:'update-user',component: UpdateUserComponent,canActivate:[LoginGuard]},
+  {path:'change-password',component: ChangePasswordComponent,canActivate:[LoginGuard]},
+  {path:'reset-code',component:ResetCodeComponent,canActivate:[LogoutGuard]},
+  {path:'reset-password',component:ResetPasswordComponent,canActivate:[LoginGuard]},
+  {path:'user-profile',component:UserProfileComponent,canActivate:[LoginGuard]},
+  {path:'upload-dp',component:UploadDpComponent,canActivate:[LoginGuard]},
+  {path:'update-stock-exchange',component:UpdateStockExchangeComponent,canActivate:[AdminGuard]},
+  {path:'display-ipos',component:DisplayIposComponent,canActivate:[AdminGuard]},
+  {path:'view-ipos',component:ViewIposComponent,canActivate:[LoginGuard]},
+  {path:'user/activate',component:ValidateComponent,canActivate:[LogoutGuard]},
   {path:'logout',component:LogoutComponent},
-  {path:'add-stock-price',component:AddStockPriceComponent},
+  {path:'add-stock-price',component:AddStockPriceComponent,canActivate:[AdminGuard]},
+  {path:'contact-us',component:ContactUsComponent},
 
   {path:'**',component:LandingPageComponent},
 ];

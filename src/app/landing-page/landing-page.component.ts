@@ -9,22 +9,10 @@ export class LandingPageComponent implements OnInit {
 
   constructor() { }
 
-  // message:string;
-  // color:string;
-  // twoway:string;
-
-  click(){
-    alert('Kaise ho?')
-  }
-
   ngOnInit() {
-    $(".carousel").carousel({
+    $("#carousel").carousel({
       interval: 3000
     })
-
-    // this.message="Jumme Raat"
-    // this.color="red"
-    // this.message=this.twoway
   }
 
 }

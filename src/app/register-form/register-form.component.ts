@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup ,FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/services/user.service';
 import { Router } from '@angular/router';
 import { User } from 'src/models/user';
+declare var $: any;
 
 @Component({
   selector: 'app-register-form',
@@ -11,61 +12,73 @@ import { User } from 'src/models/user';
 })
 export class RegisterFormComponent implements OnInit {
 
-  registerUser:FormGroup;
+  registerUser: FormGroup;
 
-  users:User[];
+  users: User[];
 
-  constructor(private formBuilder:FormBuilder, private userService:UserService, private router:Router) { }
+  message: string;
 
-  addUser(){
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
 
-    let u=this.registerUser.controls.username.value;
-    let e=this.registerUser.controls.email.value;
-    let p=this.registerUser.controls.phone.value;
-    if(this.registerUser.controls['password'].value === this.registerUser.controls['confirm_password'].value){
-      if(this.usernameValid(u)){
-        if(this.emailValid(e)){
-          if(this.numberValid(p)){
+  addUser() {
+
+    let u = this.registerUser.controls.username.value;
+    let e = this.registerUser.controls.email.value;
+    let p = this.registerUser.controls.phone.value;
+    if (this.registerUser.controls['password'].value === this.registerUser.controls['confirm_password'].value) {
+      if (this.usernameValid(u)) {
+        if (this.emailValid(e)) {
+          if (this.numberValid(p)) {
             this.userService.saveUser(this.registerUser.value).subscribe(data => {
-              alert('User Inserted Successfully');
-              this.router.navigate(['/display-users']);
+              this.message = 'User Inserted Successfully';
+              $('#alert').modal('show');
             });
-          }else{
-            alert('Mobile Number Already Exist.');
+          } else {
+            this.message = 'Mobile Number Already Exist';
+            $('#alert').modal('show');
           }
-        }else{
-          alert('Email Already Exist.');
+        } else {
+          this.message = 'Email Already Exist';
+          $('#alert').modal('show');
         }
-      }else{
-        alert('Username Already Exist.');
+      } else {
+        this.message = 'Username Already Exist';
+        $('#alert').modal('show');
       }
-    }else{
-      alert('Your Passwords doesn\'t Match');
+    } else {
+      this.message = 'Your Passwords doesn\'t Match';
+      $('#alert').modal('show');
     }
   }
 
-  usernameValid(u:string){
-    for(let user of this.users){
-      if(user.username===u){
-        return false;
-      }
-    }
-    return true;
-  }
-
-  emailValid(e:string){
-    for(let user of this.users){
-      if(user.email===e){
-        return false;
+  usernameValid(u: string) {
+    if (this.users != null) {
+      for (let user of this.users) {
+        if (user.username === u) {
+          return false;
+        }
       }
     }
     return true;
   }
 
-  numberValid(p:number){
-    for(let user of this.users){
-      if(user.phone==p){
-        return false;
+  emailValid(e: string) {
+    if (this.users != null) {
+      for (let user of this.users) {
+        if (user.email === e) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  numberValid(p: number) {
+    if (this.users != null) {
+      for (let user of this.users) {
+        if (user.phone == p) {
+          return false;
+        }
       }
     }
     return true;
@@ -78,23 +91,23 @@ export class RegisterFormComponent implements OnInit {
   // }
 
   ngOnInit() {
-    this.registerUser=this.formBuilder.group({
-      id:[],
-      username: ['',Validators.required],
-      password: ['',Validators.required],
-      confirm_password: ['',Validators.required],
+    this.registerUser = this.formBuilder.group({
+      id: [],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      confirm_password: ['', Validators.required],
       admin: ['false'],
-      email: ['',[Validators.required,Validators.email]],
-      phone: ['',Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', Validators.required],
       confirmed: ['false'],
       dp: ['../../assets/images/default.png'],
-      code: Math.random()*1000000
+      code: Math.random() * 10000000
     });
 
-    this.userService.getAllUsers().subscribe(data=>{
-      this.users=data;
+    this.userService.getAllUsers().subscribe(data => {
+      this.users = data;
     });
-    
+
   }
 
 }
