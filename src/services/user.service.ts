@@ -8,77 +8,88 @@ import { User } from 'src/models/user';
 })
 export class UserService {
 
-  port:number=8000
+  port: number = 8000
 
-  httpUrl="http://localhost:"+this.port+"/user/";
+  httpUrl = "http://localhost:" + this.port + "/user/";
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  saveUser(user:User):Observable<User>{
+  saveUser(user: User): Observable<User> {
     return this.httpClient.post<User>(this.httpUrl, user);
   }
 
-  removeUser(id:number):Observable<User>{
+  removeUser(id: number): Observable<User> {
     return this.httpClient.delete<User>(this.httpUrl + id);
   }
 
-  getUserById(id:number):Observable<User>{
+  getUserById(id: number): Observable<User> {
     return this.httpClient.get<User>(this.httpUrl + id);
   }
 
-  getUserByCode(code:number):Observable<User>{
+  getUserByCode(code: number): Observable<User> {
     return this.httpClient.get<User>(this.httpUrl + "activate/" + code);
   }
 
-  getAllUsers():Observable<User[]>{
+  getAllUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.httpUrl);
   }
 
-  updateUser(user:User):Observable<User>{
-    return this.httpClient.put<User>(this.httpUrl , user);
+  updateUser(user: User): Observable<User> {
+    return this.httpClient.put<User>(this.httpUrl, user);
   }
 
-  isLoggedIn(){
-    let userId=localStorage.getItem("userId");
-    if(userId==null){
+  isLoggedIn() {
+    let userId = localStorage.getItem("userId");
+    if (userId == null) {
       return false;
-    }else{
+    } else {
       return true;
     }
-  }  
+  }
 
-  isAdmin():boolean{
-    let admin:boolean;
-    let userId=localStorage.getItem("userId");
-    if(userId!=null){
-      if(+userId==97){
+  isAdmin(): boolean {
+    let admin: boolean;
+    let userId = localStorage.getItem("userId");
+    if (userId != null) {
+      this.getUserById(+userId).subscribe(data => {
+        admin = data.admin;
+      });
+      if (admin) {
         return true
-      }else{
+      } else {
         return false;
       }
-    }else{
+    } else {
       return false;
     }
   }
 
-  isActivated():boolean{
-    let activated:boolean;
-    let userId=localStorage.getItem("userId");
-    if(userId==null){
-      this.getUserById(+userId).subscribe(data=>{
-        activated=data.admin;
+  isActivated(): boolean {
+    let activated: boolean;
+    let userId = localStorage.getItem("userId");
+    if (userId != null) {
+      this.getUserById(+userId).subscribe(data => {
+        activated = data.confirmed;
       });
-      if(activated)
+      if (activated)
         return true;
       else
         return false;
-    }else{
+    } else {
       return false;
     }
+  }
+
+  isUserActivated(user: User): boolean {
+    if (user.confirmed)
+      return true;
+    else
+      return false;
+
   }
 
   // reg():Observable<String>{
   //   return this.httpClient.get<String>("");
   // }
-  
+
 }
