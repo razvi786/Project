@@ -4,6 +4,7 @@ import { UserService } from 'src/services/user.service';
 import { Router } from '@angular/router';
 import { User } from 'src/models/user';
 declare var $: any;
+import {Md5} from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-register-form',
@@ -18,6 +19,8 @@ export class RegisterFormComponent implements OnInit {
 
   message: string;
 
+  new_user:User=new User();
+
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
 
   addUser() {
@@ -29,7 +32,16 @@ export class RegisterFormComponent implements OnInit {
       if (this.usernameValid(u)) {
         if (this.emailValid(e)) {
           if (this.numberValid(p)) {
-            this.userService.saveUser(this.registerUser.value).subscribe(data => {
+            this.new_user.username=u;
+            this.new_user.email=e;
+            this.new_user.phone=p;
+            this.new_user.admin=false;
+            this.new_user.confirmed=false;
+            this.new_user.code=this.registerUser.controls.code.value;
+            let password=this.registerUser.controls.password.value;
+            let hash_password=Md5.hashStr(password);
+            this.new_user.password=hash_password.toString();
+            this.userService.saveUser(this.new_user).subscribe(data => {
               this.message = 'User Inserted Successfully';
               $('#alert').modal('show');
             });

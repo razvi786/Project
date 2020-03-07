@@ -34,6 +34,9 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AdminGuard } from 'src/guards/admin.guard';
 import { LoginGuard } from 'src/guards/login.guard';
 import { LogoutGuard } from 'src/guards/logout.guard';
+import { SearchComponent } from './search/search.component';
+import { ChartsComponent } from './charts/charts.component';
+import { TestComponent } from './test/test.component';
 
 
 const routes: Routes = [
@@ -65,6 +68,9 @@ const routes: Routes = [
   {path:'logout',component:LogoutComponent},
   {path:'add-stock-price',component:AddStockPriceComponent,canActivate:[AdminGuard]},
   {path:'contact-us',component:ContactUsComponent},
+  {path:'search',component:SearchComponent},
+  {path:'charts',component:ChartsComponent},
+  {path:'test',component:TestComponent},
 
   {path:'**',component:LandingPageComponent},
 ];

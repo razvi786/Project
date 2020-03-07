@@ -15,11 +15,13 @@ export class ResetComponent implements OnInit {
 
   users:User[];
 
+  current_user:User;
+
   constructor(private router:Router,private formbuilder:FormBuilder,private userService:UserService) { }
 
   ngOnInit() {
     this.validateUser=this.formbuilder.group({
-      username:['',Validators.required]
+      email:['',Validators.required]
     });
 
     this.userService.getAllUsers().subscribe(data=>{
@@ -31,24 +33,29 @@ export class ResetComponent implements OnInit {
 
     let flag:boolean;
     let id:number;
-    let uname=this.validateUser.controls.username.value;
+    let email=this.validateUser.controls.email.value;
 
-    for(let user of this.users){
-      if(user.username === uname){
-        flag=true;
-        id=user.id;
+    if(this.users!=null){
+      for(let user of this.users){
+        if(user.email === email){
+          flag=true;
+          this.current_user=user;
+        }
       }
     }
     
     if(flag){
-      let code=Math.ceil(Math.random()*10000000000);
-      localStorage.setItem('code',code.toString());
-      localStorage.setItem('userId',id.toString());
-      console.log('Activation Code: '+code);
+      let code=Math.ceil(Math.random()*10000000);
+      this.current_user.code=code;
+      this.userService.getUserById(this.current_user.id).subscribe(u=>{
+
+      })
+      localStorage.setItem('resetUserId',this.current_user.id.toString());
       this.router.navigate(['/reset-code']);
     }else{
-      alert('Username not found.');
+      alert('Email not found.');
     }
+
   }
 
 }

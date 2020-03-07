@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user';
 import { ErrorService } from '../error.service';
+import { Md5 } from 'ts-md5';
 // import * as $ from 'jquery';
 declare var $:any;
 
@@ -44,7 +45,7 @@ export class LoginFormComponent implements OnInit {
       }
     }
     if (flag) {
-      if (current_user.password == pwd) {
+      if (current_user.password === Md5.hashStr(pwd)) {
         if (this.userService.isUserActivated(current_user)) {
           localStorage.removeItem("userId");
           localStorage.setItem("userId", current_user.id.toString());

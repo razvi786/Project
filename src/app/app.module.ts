@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 // import { HttpModule } from '@angular/http';
+import { HighchartsChartComponent } from 'highcharts-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +39,9 @@ import { LogoutComponent } from './logout/logout.component';
 import { AddStockPriceComponent } from './add-stock-price/add-stock-price.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { SearchComponent } from './search/search.component';
+import { ChartsComponent } from './charts/charts.component';
+import { TestComponent } from './test/test.component';
 
 
 @NgModule({
@@ -72,7 +76,11 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     LogoutComponent,
     AddStockPriceComponent,
     AddCompanyComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    SearchComponent,
+    HighchartsChartComponent,
+    ChartsComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

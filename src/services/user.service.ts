@@ -8,8 +8,10 @@ import { User } from 'src/models/user';
 })
 export class UserService {
 
-  server: string = "http://192.168.1.22"
-  port: number = 8009
+  // server: string = "http://192.168.1.22"
+  server:string="http://localhost"
+  // port: number = 8009
+  port:number = 8000
 
   httpUrl = this.server + ":" + this.port + "/user/";
 
@@ -51,7 +53,7 @@ export class UserService {
   isAdmin(): boolean {
     let admin: boolean;
     let userId = localStorage.getItem("userId");
-      if (+userId==2 || +userId==97) {
+      if (+userId==122 || +userId==97) {
         return true
       } else {
         return false;

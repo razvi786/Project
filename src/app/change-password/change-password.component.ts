@@ -3,6 +3,7 @@ import { UserService } from 'src/services/user.service';
 import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/models/user';
+import { Md5 } from 'ts-md5';
 
 @Component({
   selector: 'app-change-password',
@@ -32,9 +33,13 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   updateThisPassword(){
-      if(this.user.password === this.updatePassword.controls['old_password'].value){
-        if((this.updatePassword.controls['password'].value === this.updatePassword.controls['confirm_password'].value)){
-          this.user.password=this.updatePassword.controls.password.value;
+    let old_password=this.updatePassword.controls.old_password.value;
+    let password=this.updatePassword.controls.password.value;
+    let confirm_password=this.updatePassword.controls.confirm_password.value;
+      if(this.user.password === Md5.hashStr(old_password)){
+        if((password === confirm_password)){
+          let hash_password=Md5.hashStr(password);
+          this.user.password=hash_password.toString();
           this.userService.updateUser(this.user).subscribe(u=>{
           this.router.navigate(['display-users']);
           alert('Your Password is Changed.');

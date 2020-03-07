@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
 
 export class CompanyService {
 
-  server: string = "http://192.168.1.22"
+  // server: string = "http://192.168.1.22"
+  server:string="http://localhost"
   port: number = 8001
 
   httpUrl = this.server + ":" + this.port + "/company/";

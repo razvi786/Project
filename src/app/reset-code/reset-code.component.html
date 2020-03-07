@@ -5,7 +5,7 @@
         <p class="h2 text-muted text-uppercase text-center">Reset Password</p>
         
         <label for="code">Activation Code:</label>
-        <input class="form-control mb-4" type="text" name="username" id="" placeholder="Paste Your Activation Code Here" formControlName="code">
+        <input class="form-control mb-4" type="text" name="code" id="" placeholder="Paste Your Activation Code Here" formControlName="code">
         
         <button class="btn btn-outline-success text-dark text-center form-control" (click)="checkCode()" [disabled]="!validateCode.valid">Reset</button>
       </form>
