@@ -41,6 +41,10 @@ export class UserService {
     return this.httpClient.put<User>(this.httpUrl, user);
   }
 
+  sendResetMail(email:string): Observable<User>{
+    return this.httpClient.get<User>(this.httpUrl + "reset-password/"+email);
+  }
+
   isLoggedIn() {
     let userId = localStorage.getItem("userId");
     if (userId == null) {

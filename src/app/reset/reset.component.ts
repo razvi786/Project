@@ -44,17 +44,27 @@ export class ResetComponent implements OnInit {
       }
     }
     
-    if(flag){
-      let code=Math.ceil(Math.random()*10000000);
-      this.current_user.code=code;
-      this.userService.getUserById(this.current_user.id).subscribe(u=>{
+    // if(flag){
+    //   let code=Math.ceil(Math.random()*10000000);
+    //   this.current_user.code=code;
+    //   this.userService.getUserById(this.current_user.id).subscribe(u=>{
 
-      })
-      localStorage.setItem('resetUserId',this.current_user.id.toString());
-      this.router.navigate(['/reset-code']);
+    //   })
+    //   localStorage.setItem('resetUserId',this.current_user.id.toString());
+    //   this.router.navigate(['/reset-code']);
+    // }else{
+    //   alert('Email not found.');
+    // }
+
+    if(flag){
+      this.userService.sendResetMail(this.current_user.email).subscribe(u=>{
+        localStorage.setItem('resetUserId',this.current_user.id.toString());
+        this.router.navigate(['/reset-code']);
+      });
     }else{
       alert('Email not found.');
     }
+
 
   }
 
