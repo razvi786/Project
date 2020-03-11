@@ -1,4 +1,49 @@
-<input type="text" name="country" id="autocomplete"/>
-<div class="autocomplete-suggestions">
-  <div class="autocomplete-group"></div>
+<div>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <input type="text" class="form-control" (input)="onInputChange($event)" (change)="selectCompany($event)" list="suggestedCompanies">
+        <datalist id="suggestedCompanies">
+          <option *ngFor="let company of companies" [value]="company.name"></option>
+        </datalist>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="select_flag" class="row">
+    <div class="col-lg-3 col-md-2 col-sm-1"></div>
+    <div class="col-lg-6 col-md-8 col-sm-10">
+      <div class="form-group border p-3 p-lg-5 border-curved mt-5 text-center">
+        <p class="h2 text-muted text-uppercase text-center">Company Profile</p>
+
+          <label class="p-3 h5">Name:</label>
+          <span class="p-3 lead">{{selected_company.name}}</span>
+          <br>
+
+          <label class="p-3 h5" >Turnover:</label>
+          <span class="p-3 lead">{{selected_company.turnover}}</span>
+          <br>
+
+          <label class="p-3 h5" >CEO:</label>
+          <span class="p-3 lead">{{selected_company.ceo}}</span>
+          <br>
+
+          <!-- <label class="p-3 h5" >Board of Directors:</label>
+          <span class="p-3 lead">{{selected_company.board_of_directors}}</span>
+          <br>
+
+          <label class="p-3 h5" >Listed in Stock Exchanges:</label>
+          <span class="p-3 lead">{{selected_company.listed_in_stock_exchanges}}</span>
+          <br> -->
+
+          <label class="p-3 h5" >Brief:</label>
+          <span class="p-3 lead">{{selected_company.brief}}</span>
+          <br>
+
+          <label class="p-3 h5" >Sector:</label>
+          <span class="p-3 lead">{{selected_company.sector}}</span>
+          <br>
+
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
+import { StockPriceService } from 'src/services/stock-price.service';
 
 @Component({
   selector: 'app-charts',
@@ -8,40 +9,46 @@ import * as Highcharts from 'highcharts';
 })
 export class ChartsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private stockPriceService:StockPriceService) { }
+
+  title:string;
+  data;
+  highcharts = Highcharts;
+  chartOptions;
 
   ngOnInit() {
+     this.stockPriceService.getPricesByCompanyCode("500112").subscribe(company_data=>{
+      console.log(company_data);
+      this.title = 'myHighchart';
+
+      company_data:[];
+       
+        this.data = [{
+                name: 'ItSolutionStuff.com',
+                data: company_data
+             }];
+       
+        
+        this.chartOptions = {   
+          chart: {
+             type: "column"
+          },
+          title: {
+             text: "Monthly Site Visitor"
+          },
+          xAxis:{
+             categories:["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+          },
+          yAxis: {          
+             title:{
+                text:"Visitors"
+             } 
+          },
+          series: this.data
+        };
+     })
   }
 
-  title = 'myHighchart';
-
-  company_data:[];
-   
-    data = [{
-            name: 'ItSolutionStuff.com',
-            data: [500, 700, 555, 444, 777, 877, 944, 567, 666, 789, 456]
-         },{
-            name: 'Nicesnippets.com',
-            data: [677, 455, 677, 877, 455, 778, 888, 567, 785, 488, 567, 654]
-         }];
-   
-    highcharts = Highcharts;
-    chartOptions = {   
-      chart: {
-         type: "column"
-      },
-      title: {
-         text: "Monthly Site Visitor"
-      },
-      xAxis:{
-         categories:["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-      },
-      yAxis: {          
-         title:{
-            text:"Visitors"
-         } 
-      },
-      series: this.data
-    };
+  
 
 }

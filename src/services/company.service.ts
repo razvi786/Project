@@ -37,4 +37,12 @@ export class CompanyService {
     return this.httpClient.put<Company>(this.httpUrl, company);
   }
 
+  getAllCompaniesByPattern(pattern:string):Observable<Company[]>{
+    return this.httpClient.get<Company[]>(this.httpUrl+"pattern/"+pattern);
+  }
+
+  getCompanyByName(name:string):Observable<Company>{
+    return this.httpClient.get<Company>(this.httpUrl+"getByName/"+name);
+  }
+
 }

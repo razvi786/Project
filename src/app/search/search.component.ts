@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CompanyService } from 'src/services/company.service';
+import { Company } from 'src/models/company';
 declare var $:any;
 @Component({
   selector: 'app-search',
@@ -7,28 +9,30 @@ declare var $:any;
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  constructor(private companyService:CompanyService) { }
+
+  companies:Company[];
+  selected_company:Company;
+  select_flag:boolean=false;
 
   ngOnInit() {
+    // this.companyService.getAllCompanies().subscribe(data =>{
+    //   this.companies=data;
+    // })
+  }
 
-    $('#autocomplete').autocomplete({
-      serviceUrl: 'http://localhost:8000/autocomplete/countries',
-      onSelect: function (suggestion) {
-          alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
-      }
-  });
+  onInputChange(e){
+    this.companyService.getAllCompaniesByPattern(e.target.value).subscribe(data => {
+          this.companies = data;
+    });
+  }
 
-  $('#autocomplete').autocomplete({
-    paramName: 'searchString',
-    transformResult: function(response) {
-        return {
-            suggestions: $.map(response.myData, function(dataItem) {
-                return { value: dataItem.valueField, data: dataItem.dataField };
-            })
-        };
-    }
-})
-
+  selectCompany(event){
+    let company_name=event.target.value;
+    this.companyService.getCompanyByName(company_name).subscribe(data=>{
+      this.selected_company=data;
+      this.select_flag=true;
+    })
   }
 
 }

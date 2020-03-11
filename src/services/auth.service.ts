@@ -3,6 +3,7 @@ import { HttpInterceptor, HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from './user.service';
 
 import {map} from 'rxjs/operators';
+import { User } from 'src/models/user';
 
 const url="http://localhost:8765/user-service/login"
 
@@ -27,8 +28,8 @@ export class AuthService implements HttpInterceptor{
     return this.httpClient.get(url,{headers}).pipe(
 
       //success function
-      map(successData=>{
-        console.log("success");
+      map((successData: User)=>{
+        console.log("success: username-"+username+" token-"+authToken);
         sessionStorage.setItem("username",username);
         sessionStorage.setItem("token",authToken);
         return successData;

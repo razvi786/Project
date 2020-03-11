@@ -22,7 +22,7 @@ import { ManageCompanyComponent } from './manage-company/manage-company.componen
 import { ManageStockExchangeComponent } from './manage-stock-exchange/manage-stock-exchange.component';
 import { AddIpoComponent } from './add-ipo/add-ipo.component';
 import { DisplayUsersComponent } from './display-users/display-users.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { UpdateUserComponent } from './update-user/update-user.component';
@@ -42,6 +42,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { SearchComponent } from './search/search.component';
 import { ChartsComponent } from './charts/charts.component';
 import { TestComponent } from './test/test.component';
+import { CompanyInfoComponent } from './company-info/company-info.component';
+import { HttpInterceptorService } from 'src/services/http-interceptor.service';
 
 
 @NgModule({
@@ -80,7 +82,8 @@ import { TestComponent } from './test/test.component';
     SearchComponent,
     HighchartsChartComponent,
     ChartsComponent,
-    TestComponent
+    TestComponent,
+    CompanyInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +95,13 @@ import { TestComponent } from './test/test.component';
     RouterModule
     // HttpModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, //@angular/common/http
+      useClass: HttpInterceptorService,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

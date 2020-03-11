@@ -36,4 +36,8 @@ export class StockPriceService {
     return this.httpClient.put<StockPrice>(this.httpUrl , stockPrice);
   }
 
+  getPricesByCompanyCode(companyCode:string):Observable<[]>{
+    return this.httpClient.get<[]>(this.httpUrl+"chart/"+companyCode);
+  }
+
 }

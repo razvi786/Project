@@ -11,9 +11,12 @@ export class UserService {
   // server: string = "http://192.168.1.22"
   server:string="http://localhost"
   // port: number = 8009
-  port:number = 8000
+  // port:number = 8000
+  port:number = 8765
+  // service_name = ""
+  service_name = "user-service"
 
-  httpUrl = this.server + ":" + this.port + "/user/";
+  httpUrl = this.server + ":" + this.port +"/"+ this.service_name + "/user/";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -45,8 +48,12 @@ export class UserService {
     return this.httpClient.get<User>(this.httpUrl + "reset-password/"+email);
   }
 
+  getUserByUsernameAndPassword(username:string,password:string):Observable<User>{
+    return this.httpClient.get<User>(this.httpUrl + "/getUserByUsernameAndPassword/"+username+"/"+password)
+  }
+
   isLoggedIn() {
-    let userId = localStorage.getItem("userId");
+    let userId = sessionStorage.getItem("userId");
     if (userId == null) {
       return false;
     } else {
@@ -55,9 +62,8 @@ export class UserService {
   }
 
   isAdmin(): boolean {
-    let admin: boolean;
-    let userId = localStorage.getItem("userId");
-      if (+userId==122 || +userId==97) {
+    let role = sessionStorage.getItem("role");
+      if (role=="admin") {
         return true
       } else {
         return false;
