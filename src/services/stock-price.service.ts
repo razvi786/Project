@@ -8,11 +8,7 @@ import { StockPrice } from 'src/models/stock-price';
 })
 export class StockPriceService {
 
-  // server: string = "http://192.168.1.22"
-  server:string="http://localhost"
-  port: number = 8005
-
-  httpUrl = this.server + ":" + this.port + "/stock-price/";
+  httpUrl = "http://localhost:8765/stock-price-service/stock-price/";
 
   constructor(private httpClient:HttpClient) { }
 
@@ -24,16 +20,16 @@ export class StockPriceService {
     return this.httpClient.delete<StockPrice>(this.httpUrl + id);
   }
 
-  getStockPriceById(id:number):Observable<StockPrice>{
-    return this.httpClient.get<StockPrice>(this.httpUrl + id);
+  updateStockPrice(stockPrice:StockPrice):Observable<StockPrice>{
+    return this.httpClient.put<StockPrice>(this.httpUrl , stockPrice);
   }
 
   getAllStockPrices():Observable<StockPrice[]>{
     return this.httpClient.get<StockPrice[]>(this.httpUrl);
   }
 
-  updateStockPrice(stockPrice:StockPrice):Observable<StockPrice>{
-    return this.httpClient.put<StockPrice>(this.httpUrl , stockPrice);
+  getStockPriceById(id:number):Observable<StockPrice>{
+    return this.httpClient.get<StockPrice>(this.httpUrl + id);
   }
 
   getPricesByCompanyCode(companyCode:string):Observable<[]>{

@@ -1,49 +1,47 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// import { HttpModule } from '@angular/http';
 import { HighchartsChartComponent } from 'highcharts-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
+import { LoginFormComponent } from './common/login-form/login-form.component';
+import { RegisterFormComponent } from './common/register-form/register-form.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { AdminPageComponent } from './admin-page/admin-page.component';
-import { UserPageComponent } from './user-page/user-page.component';
+import { AdminPageComponent } from './admin/admin-page/admin-page.component';
+import { UserPageComponent } from './user/user-page/user-page.component';
 // import { AddCompanyComponent } from './add-company/add-company.component';
-import { AddStockExchangeComponent } from './add-stock-exchange/add-stock-exchange.component';
-import { DeactivateCompanyComponent } from './deactivate-company/deactivate-company.component';
-import { UpdateCompanyComponent } from './update-company/update-company.component';
-import { ResetComponent } from './reset/reset.component';
-import { UpdateIpoComponent } from './update-ipo/update-ipo.component';
-import { ImportDataComponent } from './import-data/import-data.component';
-import { ManageCompanyComponent } from './manage-company/manage-company.component';
-import { ManageStockExchangeComponent } from './manage-stock-exchange/manage-stock-exchange.component';
-import { AddIpoComponent } from './add-ipo/add-ipo.component';
-import { DisplayUsersComponent } from './display-users/display-users.component';
+import { AddStockExchangeComponent } from './admin/add-stock-exchange/add-stock-exchange.component';
+import { UpdateCompanyComponent } from './admin/update-company/update-company.component';
+import { ResetComponent } from './common/reset/reset.component';
+import { UpdateIpoComponent } from './admin/update-ipo/update-ipo.component';
+import { ImportDataComponent } from './admin/import-data/import-data.component';
+import { ManageCompanyComponent } from './admin/manage-company/manage-company.component';
+import { ManageStockExchangeComponent } from './admin/manage-stock-exchange/manage-stock-exchange.component';
+import { AddIpoComponent } from './admin/add-ipo/add-ipo.component';
+import { DisplayUsersComponent } from './admin/display-users/display-users.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { UpdateUserComponent } from './update-user/update-user.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
-import { ResetCodeComponent } from './reset-code/reset-code.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { UploadDpComponent } from './upload-dp/upload-dp.component';
-import { UpdateStockExchangeComponent } from './update-stock-exchange/update-stock-exchange.component';
-import { DisplayIposComponent } from './display-ipos/display-ipos.component';
-import { ViewIposComponent } from './view-ipos/view-ipos.component';
-import { ValidateComponent } from './validate/validate.component';
-import { LogoutComponent } from './logout/logout.component';
-import { AddStockPriceComponent } from './add-stock-price/add-stock-price.component';
-import { AddCompanyComponent } from './add-company/add-company.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-import { SearchComponent } from './search/search.component';
-import { ChartsComponent } from './charts/charts.component';
-import { TestComponent } from './test/test.component';
-import { CompanyInfoComponent } from './company-info/company-info.component';
+import { UpdateUserComponent } from './user/update-user/update-user.component';
+import { ChangePasswordComponent } from './common/change-password/change-password.component';
+import { ResetCodeComponent } from './common/reset-code/reset-code.component';
+import { ResetPasswordComponent } from './common/reset-password/reset-password.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { UploadDpComponent } from './user/upload-dp/upload-dp.component';
+import { UpdateStockExchangeComponent } from './admin/update-stock-exchange/update-stock-exchange.component';
+import { DisplayIposComponent } from './admin/display-ipos/display-ipos.component';
+import { ViewIposComponent } from './user/view-ipos/view-ipos.component';
+import { ValidateComponent } from './user/validate/validate.component';
+import { LogoutComponent } from './common/logout/logout.component';
+import { AddStockPriceComponent } from './admin/add-stock-price/add-stock-price.component';
+import { AddCompanyComponent } from './admin/add-company/add-company.component';
+import { ContactUsComponent } from './common/contact-us/contact-us.component';
+import { SearchComponent } from './user/search/search.component';
+import { ChartsComponent } from './user/charts/charts.component';
 import { HttpInterceptorService } from 'src/services/http-interceptor.service';
+import { CompareCompanyComponent } from './user/compare-company/compare-company.component';
+import { CompareSectorComponent } from './user/compare-sector/compare-sector.component';
 
 
 @NgModule({
@@ -54,9 +52,7 @@ import { HttpInterceptorService } from 'src/services/http-interceptor.service';
     LandingPageComponent,
     AdminPageComponent,
     UserPageComponent,
-    // AddCompanyComponent,
     AddStockExchangeComponent,
-    DeactivateCompanyComponent,
     UpdateCompanyComponent,
     ResetComponent,
     UpdateIpoComponent,
@@ -82,8 +78,8 @@ import { HttpInterceptorService } from 'src/services/http-interceptor.service';
     SearchComponent,
     HighchartsChartComponent,
     ChartsComponent,
-    TestComponent,
-    CompanyInfoComponent
+    CompareCompanyComponent,
+    CompareSectorComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,11 +89,10 @@ import { HttpInterceptorService } from 'src/services/http-interceptor.service';
     FormsModule,
     ReactiveFormsModule,
     RouterModule
-    // HttpModule
   ],
   providers: [
     {
-      provide: HTTP_INTERCEPTORS, //@angular/common/http
+      provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,
       multi:true
     }

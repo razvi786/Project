@@ -8,15 +8,7 @@ import { User } from 'src/models/user';
 })
 export class UserService {
 
-  // server: string = "http://192.168.1.22"
-  server:string="http://localhost"
-  // port: number = 8009
-  // port:number = 8000
-  port:number = 8765
-  // service_name = ""
-  service_name = "user-service"
-
-  httpUrl = this.server + ":" + this.port +"/"+ this.service_name + "/user/";
+  httpUrl = "http://localhost:8765/user-service/user/";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -28,6 +20,14 @@ export class UserService {
     return this.httpClient.delete<User>(this.httpUrl + id);
   }
 
+  updateUser(user: User): Observable<User> {
+    return this.httpClient.put<User>(this.httpUrl, user);
+  }
+
+  getAllUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.httpUrl);
+  }
+
   getUserById(id: number): Observable<User> {
     return this.httpClient.get<User>(this.httpUrl + id);
   }
@@ -36,73 +36,36 @@ export class UserService {
     return this.httpClient.get<User>(this.httpUrl + "activate/" + code);
   }
 
-  getAllUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.httpUrl);
+  getUserByEmail(email: string): Observable<User> {
+    return this.httpClient.get<User>(this.httpUrl + "email/" + email);
   }
 
-  updateUser(user: User): Observable<User> {
-    return this.httpClient.put<User>(this.httpUrl, user);
+  getUserByUsername(username: string): Observable<User> {
+    return this.httpClient.get<User>(this.httpUrl + "username/" + username);
   }
 
-  sendResetMail(email:string): Observable<User>{
-    return this.httpClient.get<User>(this.httpUrl + "reset-password/"+email);
+  getUserByPhone(phone: number): Observable<User> {
+    return this.httpClient.get<User>(this.httpUrl + "phone/" + phone);
   }
 
-  getUserByUsernameAndPassword(username:string,password:string):Observable<User>{
-    return this.httpClient.get<User>(this.httpUrl + "/getUserByUsernameAndPassword/"+username+"/"+password)
+  getUserByUsernameAndPassword(username: string, password: string): Observable<User> {
+    return this.httpClient.get<User>(this.httpUrl + "username-password/" + username + "/" + password)
   }
 
-  isLoggedIn() {
-    let userId = sessionStorage.getItem("userId");
-    if (userId == null) {
-      return false;
-    } else {
-      return true;
-    }
+  sendResetMail(email: string): Observable<User> {
+    return this.httpClient.get<User>(this.httpUrl + "reset-password/" + email);
   }
 
-  isAdmin(): boolean {
-    let role = sessionStorage.getItem("role");
-      if (role=="admin") {
-        return true
+  isActivated(id: number): boolean {
+    let activated: boolean;
+    this.getUserById(id).subscribe(data => {
+      if (data.confirmed) {
+        return true;
       } else {
         return false;
       }
+    });
+    return false;
   }
-
-  isActivated(): boolean {
-    let activated: boolean;
-    let userId = localStorage.getItem("userId");
-    if (userId != null) {
-      this.getUserById(+userId).subscribe(data => {
-        activated = data.confirmed;
-      });
-      if (activated)
-        return true;
-      else
-        return false;
-    } else {
-      return false;
-    }
-  }
-
-  isUserActivated(user: User): boolean {
-    if (user.confirmed)
-      return true;
-    else
-      return false;
-
-  }
-
-  // isUserAdmin(user: User): boolean {
-  //   if (user.admin)
-  //     return true;
-  //   else
-  //     return false;
-  // }
-
-  // reg():Observable<String>{
-  //   return this.httpClient.get<String>("");
-  // }
 
 }

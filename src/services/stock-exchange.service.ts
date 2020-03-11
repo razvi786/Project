@@ -8,11 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class StockExchangeService {
 
-  // server: string = "http://192.168.1.22"
-  server:string="http://localhost"
-  port: number = 8004
-
-  httpUrl = this.server + ":" + this.port + "/stock-exchange/";
+  httpUrl = "http://localhost:8765/stock-exchange-service/stock-exchange/";
 
   constructor(private httpClient:HttpClient) { }
 
@@ -20,20 +16,20 @@ export class StockExchangeService {
     return this.httpClient.post<StockExchange>(this.httpUrl,stockExchange);
   }
 
+  removeStockExchange(id:number):Observable<StockExchange>{
+    return this.httpClient.delete<StockExchange>(this.httpUrl + id);
+  }
+
+  updateStockExchange(stockExchange:StockExchange):Observable<StockExchange>{
+    return this.httpClient.put<StockExchange>(this.httpUrl, stockExchange);
+  }  
+
   getAllStockExchanges():Observable<StockExchange[]>{
     return this.httpClient.get<StockExchange[]>(this.httpUrl);
   }
 
   getStockExchangeById(id:number):Observable<StockExchange>{
     return this.httpClient.get<StockExchange>(this.httpUrl + id);
-  }
-
-  updateStockExchange(stockExchange:StockExchange):Observable<StockExchange>{
-    return this.httpClient.put<StockExchange>(this.httpUrl, stockExchange);
-  }
-
-  removeStockExchange(id:number):Observable<StockExchange>{
-    return this.httpClient.delete<StockExchange>(this.httpUrl + id);
   }
 
 }

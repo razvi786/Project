@@ -9,11 +9,7 @@ import { Observable } from 'rxjs';
 
 export class CompanyService {
 
-  // server: string = "http://192.168.1.22"
-  server:string="http://localhost"
-  port: number = 8001
-
-  httpUrl = this.server + ":" + this.port + "/company/";
+  httpUrl = "http://localhost:8765/company-service/company/";
 
   constructor(private httpClient:HttpClient) { }
 
@@ -25,6 +21,10 @@ export class CompanyService {
     return this.httpClient.delete<Company>(this.httpUrl + id);
   }
 
+  updateCompany(company:Company):Observable<Company>{
+    return this.httpClient.put<Company>(this.httpUrl, company);
+  }
+
   getAllCompanies():Observable<Company[]>{
     return this.httpClient.get<Company[]>(this.httpUrl);
   }
@@ -33,16 +33,12 @@ export class CompanyService {
     return this.httpClient.get<Company>(this.httpUrl + id);
   }
 
-  updateCompany(company:Company):Observable<Company>{
-    return this.httpClient.put<Company>(this.httpUrl, company);
-  }
-
   getAllCompaniesByPattern(pattern:string):Observable<Company[]>{
     return this.httpClient.get<Company[]>(this.httpUrl+"pattern/"+pattern);
   }
 
   getCompanyByName(name:string):Observable<Company>{
-    return this.httpClient.get<Company>(this.httpUrl+"getByName/"+name);
+    return this.httpClient.get<Company>(this.httpUrl+"name/"+name);
   }
 
 }

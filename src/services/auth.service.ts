@@ -30,8 +30,10 @@ export class AuthService implements HttpInterceptor{
       //success function
       map((successData: User)=>{
         console.log("success: username-"+username+" token-"+authToken);
+        sessionStorage.setItem("userId",successData.id.toString());
         sessionStorage.setItem("username",username);
         sessionStorage.setItem("token",authToken);
+        sessionStorage.setItem("role",successData.user_type);
         return successData;
       }),
 
@@ -46,8 +48,15 @@ export class AuthService implements HttpInterceptor{
   }
 
   isUserLoggedIn():boolean{
-    let user=sessionStorage.getItem("username")
-    if(user==null)
+    let userId=sessionStorage.getItem("userId")
+    if(userId==null)
+      return false
+    return true
+  }
+
+  isAdmin():boolean{
+    let role=sessionStorage.getItem("role")
+    if(role==null)
       return false
     return true
   }
@@ -59,8 +68,10 @@ export class AuthService implements HttpInterceptor{
   }
 
   logout() {
-    sessionStorage.removeItem('username');
+    sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("username");
     sessionStorage.removeItem("token")
+    sessionStorage.removeItem("role")
   }
 
 }

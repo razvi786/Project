@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { IPO } from 'src/models/ipo';
 import { Observable } from 'rxjs';
@@ -10,11 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class IPOService {
 
-  // server: string = "http://192.168.1.22"
-  server:string="http://localhost"
-  port: number = 8002
-
-  httpUrl = this.server + ":" + this.port + "/ipo/";
+  httpUrl = "http://localhost:8765/initial-public-offering-service/ipo/"
 
   constructor(private httpClient:HttpClient) { }
 

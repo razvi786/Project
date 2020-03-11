@@ -1,0 +1,36 @@
+<div class="row py-5 py-md-4 py-3">
+  <div class="col mx-auto table-responsive">
+      <table class="table border-curved p-1 p-md-3 p-lg-5">
+          <caption style="caption-side: top;"><h1 class=" h2 text-center text-uppercase" >All Users</h1></caption>
+  <thead>
+    <th>Id</th>
+    <th>Username</th>
+    <th>Password</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Confirmed</th>
+    <th>Code</th>
+    <th>Dp</th>
+    <th>User Type</th>
+    <th>Actions</th>
+  </thead>
+  <tbody *ngFor="let user of users">
+    <td>{{user.id}}</td>
+    <td>{{user.username}}</td>
+    <td>{{user.password}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.phone}}</td>
+    <td>{{user.confirmed}}</td>
+    <td>{{user.code}}</td>
+    <td>{{user.dp}}</td>
+    <td>{{user.user_type}}</td>
+    <td><button class="btn btn-danger mx-auto m-2" (click)="deleteUser(user)">Delete</button>
+      <button class="btn btn-warning mx-auto m-2" (click)="updateUser(user)">Update</button>
+      <button class="btn btn-info mx-auto m-2" (click)="viewProfile(user)">View Profile</button>
+    </td>
+  </tbody>
+</table>
+
+<button class="btn btn-block btn-outline-secondary" routerLink="/register">Add New User</button>
+    </div>
+</div>
