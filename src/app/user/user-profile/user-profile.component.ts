@@ -28,6 +28,7 @@ export class UserProfileComponent implements OnInit {
 
   deactivateUser(){
     this.user.confirmed=false;
+    this.user.code=Math.ceil(Math.random()*1000000)
     this.userService.updateUser(this.user).subscribe(data=>{
       this.router.navigate(['/logout']);
     })

@@ -1,7 +1,7 @@
 <div class="row py-5 py-md-4 py-3">
   <div class="col mx-auto table-responsive">
-    <h1 *ngIf="!users">No Users Found</h1>
-    <table class="table border-curved p-1 p-md-3 p-lg-5" *ngIf="users">
+    <h1 *ngIf="!users" class=" h2 text-center text-uppercase">No Users Found</h1>
+    <table *ngIf="users" class="table border-curved p-1 p-md-3 p-lg-5">
       <caption style="caption-side: top;">
         <h1 class=" h2 text-center text-uppercase">All Users</h1>
       </caption>

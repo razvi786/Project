@@ -6,7 +6,7 @@ export class Company{
     turnover:number;
     ceo:string;
     directors:string[];
-    listed_in:ListedIn[];
+    listedIn:ListedIn[];
     sector:string;
     brief:string;
     activated:boolean;

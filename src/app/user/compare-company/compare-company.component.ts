@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StockExchange } from 'src/models/stock-exchange';
 import { StockExchangeService } from 'src/services/stock-exchange.service';
+import { CompanyNameStock } from 'src/models/stock-price';
 
 @Component({
   selector: 'app-compare-company',
@@ -13,7 +14,7 @@ import { StockExchangeService } from 'src/services/stock-exchange.service';
 })
 export class CompareCompanyComponent implements OnInit {
 
-  companies:Company[];
+  companies:CompanyNameStock[]=[];
   stock_exchanges:StockExchange[];
   selected_company1:string="";
   selected_company2:string="";
@@ -31,11 +32,27 @@ export class CompareCompanyComponent implements OnInit {
       to:['',[Validators.required]],
       periodicity:['',[Validators.required]]
     })
-    this.companyService.getAllCompanies().subscribe(data=>{
-      this.companies=data;
-    })
     this.stockExchangeService.getAllStockExchanges().subscribe(data=>{
       this.stock_exchanges=data;
+    })
+    
+  }
+
+  showCompanies(){
+    this.companies=[];
+    this.companyService.getAllCompanies().subscribe(data=>{
+      for(let company of data){
+        for(let listed of company.listedIn){
+          if(listed.stockExchangeName==this.selected_stock_exchange){
+            let c:CompanyNameStock=new CompanyNameStock();
+            c.company_name=company.name
+            c.stock_code=listed.stockCode
+            this.companies.push(c);
+          }
+        }
+      }
+      console.log("Companies: "+this.companies);
+      
     })
   }
 

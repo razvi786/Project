@@ -3,7 +3,7 @@ import { UserService } from 'src/services/user.service';
 import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/models/user';
-import { Md5 } from 'ts-md5';
+declare var $:any;
 
 @Component({
   selector: 'app-change-password',
@@ -15,7 +15,7 @@ export class ChangePasswordComponent implements OnInit {
   constructor(private userService:UserService, private formBuilder:FormBuilder, private router:Router) { }
 
   updatePassword:FormGroup;
-  
+  message:string;
   user:User;
 
   ngOnInit() {
@@ -25,7 +25,7 @@ export class ChangePasswordComponent implements OnInit {
       confirm_password:['',Validators.required],
     });
 
-    const id=localStorage.getItem('userId');
+    const id=sessionStorage.getItem('userId');
 
     this.userService.getUserById(+id).subscribe(data=>{
       this.user=data;
@@ -36,19 +36,20 @@ export class ChangePasswordComponent implements OnInit {
     let old_password=this.updatePassword.controls.old_password.value;
     let password=this.updatePassword.controls.password.value;
     let confirm_password=this.updatePassword.controls.confirm_password.value;
-      if(this.user.password === Md5.hashStr(old_password)){
+      if(this.user.password === (old_password)){
         if((password === confirm_password)){
-          let hash_password=Md5.hashStr(password);
-          this.user.password=hash_password.toString();
+          this.user.password=password;
           this.userService.updateUser(this.user).subscribe(u=>{
-          this.router.navigate(['display-users']);
-          alert('Your Password is Changed.');
+          this.message='Your Password is Changed.';
+          $('#alert').modal('show');
         });
       }else{
-        alert('Your Passwords doesn\'t match');
+        this.message='Your Passwords doesn\'t match'
+        $('#alert').modal('show');
       }
     }else{
-      alert('Your Old Password is Incorrect!');
+      this.message='Your Old Password is Incorrect!'
+      $('#alert').modal('show');
     }
   }
 

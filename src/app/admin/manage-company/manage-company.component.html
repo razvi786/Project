@@ -1,6 +1,7 @@
 <div class="row py-5 py-md-4 py-3">
   <div class="col mx-auto table-responsive">
-    <table class="table border-curved p-1 p-md-3 p-lg-5">
+    <h1 *ngIf="!companies" class=" h2 text-center text-uppercase">No Companies Found</h1>
+    <table *ngIf="companies" class="table border-curved p-1 p-md-3 p-lg-5">
       <caption style="caption-side: top;">
         <h1 class="h2 text-center text-uppercase">Companies</h1>
       </caption>
@@ -10,11 +11,10 @@
           <th>Company Name</th>
           <th>Turnover</th>
           <th>CEO</th>
-          <!-- <th>Board Of Directors</th>
-          <th>Listed In Stock Exchanges</th> -->
+          <th>Listed In Stock Exchanges</th>
+          <th>Board Of Directors</th>
           <th>Sector</th>
           <th>Brief</th>
-          <th>Stock Code</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -24,11 +24,14 @@
           <td>{{company.name}}</td>
           <td>{{company.turnover}}</td>
           <td>{{company.ceo}}</td>
-          <!-- <td>{{company.board_of_directors}}</td>
-          <td>{{company.listed_in_stock_exchanges}}</td> -->
+          <td>
+            <span *ngFor="let listed of company.listedIn">
+              {{listed.stockExchangeName}}:{{listed.stockCode}}
+            </span>
+          </td>
+          <td>{{company.directors}}</td>
           <td>{{company.sector}}</td>
           <td>{{company.brief}}</td>
-          <td>{{company.stock_code}}</td>
           <td><button class="btn btn-warning mx-auto m-2" (click)="updateCompany(company)">Update</button>
             <button *ngIf="company.activated" class="btn btn-danger mx-auto m-2"
               (click)="deactivateCompany(company)">Deactivate</button>

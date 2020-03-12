@@ -37,8 +37,8 @@ export class StockPriceService {
     return this.httpClient.get<[]>(this.httpUrl+"chart/"+companyCode);
   }
 
-  getCompanyStockPricesBetween(companyCode: string, stockExchange: string, startDate: Date, endDate: Date,periodicity: string): Observable<any[]> {
-    let url = "companyStockPriceBetween/"+companyCode+"/"+stockExchange+"/"+startDate+"/"+endDate+"/"+periodicity;
+  getCompanyStockPricesBetween(companyCode: string, stockExchange: string, startDate: string, endDate: string,periodicity: string): Observable<any[]> {
+    let url = companyCode+"/"+stockExchange+"/"+startDate+"/"+endDate+"/"+periodicity;
     return this.httpClient.get<any[]>(this.httpUrl+url);
   }
 

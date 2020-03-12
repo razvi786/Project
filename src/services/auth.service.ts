@@ -30,7 +30,6 @@ export class AuthService implements HttpInterceptor{
 
       //success function
       map((successData: User)=>{
-        console.log("success: username-"+username+" token-"+authToken);
         sessionStorage.setItem("userId",successData.id.toString());
         sessionStorage.setItem("username",username);
         sessionStorage.setItem("token",authToken);
@@ -40,7 +39,6 @@ export class AuthService implements HttpInterceptor{
 
       //failure function
       map(failureData=>{
-        console.log("failure")
         return failureData;
       })
       
@@ -57,9 +55,10 @@ export class AuthService implements HttpInterceptor{
 
   isAdmin():boolean{
     let role=sessionStorage.getItem("role")
-    if(role==null)
+    if(role=="ROLE_ADMIN")
+      return true
+    else
       return false
-    return true
   }
 
   getAuthToken() {

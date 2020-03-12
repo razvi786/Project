@@ -13,7 +13,7 @@
         <label for="company_code">Company Code:</label>
         <select class="form-control" formControlName="company_code">
             <option value="" selected disabled>Select Company code</option>
-            <option *ngFor="let c of companies" value="{{c.name}}">{{c.name}}</option>
+            <option *ngFor="let c of companies" [value]="c.name">{{c.name}}</option>
         </select>
 
         <label for="date">Date:</label>

@@ -19,42 +19,46 @@ export class ChartsComponent implements OnInit {
     getSecondDataComplete: boolean = false;
     ngOnInit() {
         this.compareData = JSON.parse(this.route.snapshot.queryParams.formData);
+        console.log(this.compareData);
+        
 
         let series: any = []
             let categories: any[] = [];
-            this.stockPriceService.getCompanyStockPricesBetween(this.compareData.companies[0].companyCode, this.compareData.companies[0].stockExchange, this.compareData.periods[0].fromDate, this.compareData.periods[0].toDate, this.compareData.periodicity).subscribe(data => {
+            this.stockPriceService.getCompanyStockPricesBetween(this.compareData.company1,this.compareData.stock_exchange,this.compareData.from.toString(), this.compareData.to.toString(), this.compareData.periodicity).subscribe(data => {
                 let companyOneData: any[] = [];
                 data.forEach((stockPrice: StockPriceData) => {
                     categories.push(stockPrice.dataPoint);
                     companyOneData.push(stockPrice.dataValue)
                 })
                 let seriesDataMemberOne = {
-                    name: this.compareData.companies[0].companyCode + " (" + this.compareData.companies[0].stockExchange + ")",
+                    name: this.compareData.company1 + " (" + this.compareData.stock_exchange + ")",
                     data: companyOneData
                 }
                 series[0] = seriesDataMemberOne;
                 this.getFirstDataComplete = true;
-            });
-            this.stockPriceService.getCompanyStockPricesBetween(this.compareData.companies[1].companyCode, this.compareData.companies[1].stockExchange, this.compareData.periods[0].fromDate, this.compareData.periods[0].toDate, this.compareData.periodicity).subscribe(data => {
-                let companyTwoData: any[] = [];
-                data.forEach((stockPrice: StockPriceData) => {
-                    if (categories.includes(stockPrice.dataPoint)) {
-                        companyTwoData.push(stockPrice.dataValue)
+                
+                this.stockPriceService.getCompanyStockPricesBetween(this.compareData.company2, this.compareData.stock_exchange, this.compareData.from.toString(), this.compareData.to.toString(), this.compareData.periodicity).subscribe(data => {
+                    let companyTwoData: any[] = [];
+                    data.forEach((stockPrice: StockPriceData) => {
+                        if (categories.includes(stockPrice.dataPoint)) {
+                            companyTwoData.push(stockPrice.dataValue)
+                        }
+                    })
+                    let seriesDataMemberTwo = {
+                        name: this.compareData.company2 + " (" + this.compareData.stock_exchange + ")",
+                        data: companyTwoData
                     }
-                })
-                let seriesDataMemberTwo = {
-                    name: this.compareData.companies[1].companyCode + " (" + this.compareData.companies[1].stockExchange + ")",
-                    data: companyTwoData
-                }
-                series[1] = seriesDataMemberTwo;
-                this.getSecondDataComplete = true;
+                    series[1] = seriesDataMemberTwo;
+                    this.getSecondDataComplete = true;
+                });
             });
+            
             this.chartOneOptions = {
                 chart: {
                     type: "column"
                 },
                 title: {
-                    text: "Stock Comparision Chart"
+                    text: this.compareData.periodicity+" Wise Comparision"
                 },
                 xAxis: {
                     categories: categories

@@ -15,9 +15,15 @@ export class StockPriceData {
 }
 
 export class CompareFormData {
+  stock_exchange: string;
   company1: string;
   company2: string;
   from: Date;
   to:Date;
   periodicity:string;
+}
+
+export class CompanyNameStock {
+  company_name: string;
+  stock_code: string;
 }
