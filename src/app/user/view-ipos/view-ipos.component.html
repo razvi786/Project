@@ -1,6 +1,7 @@
 <div class="row py-5 py-md-4 py-3">
   <div class="col mx-auto table-responsive">
-    <table class="table border-curved p-1 p-md-3 p-lg-5">
+    <h1 *ngIf="!ipos" class=" h2 text-center text-uppercase">No IPOs Found</h1>
+    <table *ngIf="ipos" class="table border-curved p-1 p-md-3 p-lg-5">
       <caption style="caption-side: top;">
         <h1 class=" h2 text-center text-uppercase">All IPOs</h1>
       </caption>

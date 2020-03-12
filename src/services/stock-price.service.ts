@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { StockPrice } from 'src/models/stock-price';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StockPriceService {
 
-  httpUrl = "http://localhost:8765/stock-price-service/stock-price/";
+  httpUrl = environment.server + "stock-price-service/stock-price/";
 
   constructor(private httpClient:HttpClient) { }
 
@@ -34,6 +35,11 @@ export class StockPriceService {
 
   getPricesByCompanyCode(companyCode:string):Observable<[]>{
     return this.httpClient.get<[]>(this.httpUrl+"chart/"+companyCode);
+  }
+
+  getCompanyStockPricesBetween(companyCode: string, stockExchange: string, startDate: Date, endDate: Date,periodicity: string): Observable<any[]> {
+    let url = "companyStockPriceBetween/"+companyCode+"/"+stockExchange+"/"+startDate+"/"+endDate+"/"+periodicity;
+    return this.httpClient.get<any[]>(this.httpUrl+url);
   }
 
 }

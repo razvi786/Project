@@ -1,32 +1,34 @@
+<div class="row py-5 py-md-4 py-3">
+  <div class="col-lg-9 col-md-10 col-12 mx-auto table-responsive">
+    <h1 *ngIf="!ses" class=" h2 text-center text-uppercase">No Stock Exchanges Found</h1>
+    <table *ngIf="ses" class="table border-curved p-1 p-md-3 p-lg-5">
+      <caption style="caption-side: top;">
+        <h1 class="h2 text-center text-uppercase">Stock Exchanges</h1>
+      </caption>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Stock Exchange</th>
+          <th>Brief</th>
+          <th>Contact Address</th>
+          <th>Remarks</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let se of ses">
+          <td>{{se.id}}</td>
+          <td>{{se.name}}</td>
+          <td>{{se.brief}}</td>
+          <td>{{se.address}}</td>
+          <td>{{se.remarks}}</td>
+          <td>
+            <button class="btn btn-warning m-3 mx-auto" (click)="updateStockExchange(se)">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-    <div class="row py-5 py-md-4 py-3">
-            <div class="col-lg-9 col-md-10 col-12 mx-auto table-responsive">
-                <table class="table border-curved p-1 p-md-3 p-lg-5">
-                    <caption style="caption-side: top;"><h1 class="h2 text-center text-uppercase" >Stock Exchanges</h1></caption>
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Stock Exchange</th>
-                            <th>Brief</th>
-                            <th>Contact Address</th>
-                            <th>Remarks</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let se of ses">
-                            <td>{{se.id}}</td>
-                            <td>{{se.name}}</td>
-                            <td>{{se.brief}}</td>
-                            <td>{{se.address}}</td>
-                            <td>{{se.remarks}}</td>
-                            <td>
-                                <button class="btn btn-warning m-3 mx-auto" (click)="updateStockExchange(se)">Update</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <button class="btn btn-block btn-outline-secondary" routerLink="/add-stock-exchange">Add Stock Exchange</button>
-            </div>
-        </div>
+    <button class="btn btn-block btn-outline-secondary" routerLink="/add-stock-exchange">Add Stock Exchange</button>
+  </div>
+</div>

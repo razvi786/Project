@@ -5,7 +5,7 @@
         <form [formGroup]="updateUser" class="form-group border p-3 p-lg-5 border-curved mt-5">
           <p class="h2 text-muted text-uppercase text-center">Update User</p>
 
-          <img src="{{user.dp}}" alt="Profile Picture" class="hover avatar m-3 mx-auto" routerLink="/upload-dp">
+          <img [src]="user.dp" alt="Profile Picture" class="hover avatar m-3 mx-auto" routerLink="/upload-dp">
           <br>
 
           <label for="id">Id:</label>

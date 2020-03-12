@@ -27,6 +27,9 @@
                 <li *ngIf="authService.isUserLoggedIn()" class="nav-item">
                     <a routerLink="/search" class="nav-link text-center">Search</a>
                 </li>
+                <li *ngIf="authService.isUserLoggedIn()" class="nav-item">
+                    <a routerLink="/user-profile" class="nav-link text-center">Profile</a>
+                </li>
                 <li class="nav-item">
                     <a routerLink="/contact-us" class="nav-link text-center">Contact Us</a>
                 </li>

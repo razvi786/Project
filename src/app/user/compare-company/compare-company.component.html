@@ -1,1 +1,42 @@
-<p>compare-company works!</p>
+<div class="row">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <form [formGroup]="compareCompany" (ngSubmit)="onSubmit()" class="form-group border p-5 border-curved mt-5" *ngIf="companies">
+      <p class="h2 text-muted text-uppercase text-center mb-4">Compare Company</p>
+
+      <label for="stock_exchange">Stock Exchange:</label>
+      <select name="stock_exchange" class="form-control" formControlName="stock_exchange" [(ngModel)]="selected_stock_exchange">
+        <option value="" disabled selected>Select Stock Exchange</option>
+          <option *ngFor="let se of stock_exchanges" [value]="se.name">{{se.name}}</option>
+      </select>
+
+      <label for="company1">Company 1:</label>
+      <select name="company1" class="form-control" formControlName="company1" [(ngModel)]="selected_company1">
+        <option value="" disabled selected>Select Company</option>
+          <option *ngFor="let company of companies" [value]="company.name">{{company.name}}</option>
+      </select>
+
+      <label for="company1">Company 2:</label>
+      <select name="company1" class="form-control" formControlName="company2" [(ngModel)]="selected_company2">
+        <option value="" disabled selected>Select Company</option>
+          <option *ngFor="let company of companies" [value]="company.name">{{company.name}}</option>
+      </select>
+
+      <label for="from">From Date:</label>
+      <input type="date" name="from" formControlName="from" class="form-control">
+
+      <label for="to">To Date:</label>
+      <input type="date" name="to" formControlName="to" class="form-control">
+
+      <label for="periodicity">Periodicity:</label>
+      <select name="periodicity" id="periodicity" formControlName="periodicity" class="form-control">
+        <option value="" disabled selected>Select Periodicity</option>
+        <option value="Day">Day</option>
+        <option value="Month">Month</option>
+        <option value="Year">Year</option>
+      </select>
+
+      <button class="btn btn-outline-warning text-dark text-center form-control my-3" [disabled]="!compareCompany.valid">Compare</button>
+    </form>
+  </div>
+</div>

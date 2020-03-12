@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { StockExchangeService } from 'src/services/stock-exchange.service';
 import { StockExchange } from 'src/models/stock-exchange';
 
@@ -11,7 +11,7 @@ import { StockExchange } from 'src/models/stock-exchange';
 })
 export class UpdateStockExchangeComponent implements OnInit {
 
-  constructor(private formBuilder:FormBuilder, private router:Router,private seService:StockExchangeService) { }
+  constructor(private formBuilder:FormBuilder, private router:Router,private seService:StockExchangeService, private route:ActivatedRoute) { }
 
   updateSE:FormGroup;
   se:StockExchange;
@@ -20,12 +20,12 @@ export class UpdateStockExchangeComponent implements OnInit {
     this.updateSE=this.formBuilder.group({
       id:['',Validators.required],
       name:['',Validators.required],
-      brief:['',Validators.required],
+      brief:[''],
       address:['',Validators.required],
-      remarks:['',Validators.required]
+      remarks:['']
     });
 
-    const id=localStorage.getItem('seId');
+    const id=this.route.snapshot.paramMap.get("id")
     if(+id > 0){
       this.seService.getStockExchangeById(+id).subscribe(se=>{
         this.updateSE.patchValue(se);
@@ -37,7 +37,6 @@ export class UpdateStockExchangeComponent implements OnInit {
   updateThisSE(){
     this.seService.updateStockExchange(this.updateSE.value).subscribe(c=>{
       this.router.navigate(['/manage-stock-exchange']);
-      alert('Stock Exchange Updated Successfully.');
     })
   }
 

@@ -16,9 +16,6 @@ export class SearchComponent implements OnInit {
   select_flag:boolean=false;
 
   ngOnInit() {
-    // this.companyService.getAllCompanies().subscribe(data =>{
-    //   this.companies=data;
-    // })
   }
 
   onInputChange(e){

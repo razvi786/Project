@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Company } from 'src/models/company';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs';
 
 export class CompanyService {
 
-  httpUrl = "http://localhost:8765/company-service/company/";
+  httpUrl = environment.server + "company-service/company/";
 
   constructor(private httpClient:HttpClient) { }
 

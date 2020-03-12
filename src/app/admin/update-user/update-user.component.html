@@ -1,0 +1,26 @@
+<div>
+  <div class="row">
+      <div class="col-lg-3 col-md-2 col-sm-1"></div>
+      <div class="col-lg-6 col-md-8 col-sm-10">
+        <form [formGroup]="updateUser" class="form-group border p-3 p-lg-5 border-curved mt-5">
+          <p class="h2 text-muted text-uppercase text-center">Update User</p>
+
+          <label for="id">Id:</label>
+          <input name="id" formControlName="id" type="number" class="form-control" placeholder="Your Id" disabled>
+
+          <label for="username">Username:</label>
+          <input name="username" formControlName="username" type="text" class="form-control" placeholder="Your Username">
+
+          <label for="email">Email:</label>
+          <input name="email" formControlName="email" type="email" class="form-control" placeholder="Your Email">
+
+          <label for="phone">Mobile Number:</label>
+          <input name="phone" formControlName="phone" type="number" class="form-control" placeholder="Your Mobile Number">
+
+          <button class="btn btn-block btn-secondary m-3 mx-auto" routerLink="/change-password">Change Password</button>
+
+          <button class="btn btn-warning text-dark text-center form-control my-3" (click)="updateThisUser()" [disabled]="!updateUser.valid">Update User</button>
+        </form>
+      </div>
+  </div>
+</div>

@@ -4,8 +4,9 @@ import { UserService } from './user.service';
 
 import {map} from 'rxjs/operators';
 import { User } from 'src/models/user';
+import { environment } from 'src/environments/environment';
 
-const url="http://localhost:8765/user-service/login"
+const url=environment.server + "user-service/login"
 
 @Injectable({
   providedIn: 'root'

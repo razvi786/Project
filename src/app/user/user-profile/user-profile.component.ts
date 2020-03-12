@@ -11,26 +11,25 @@ import { User } from 'src/models/user';
 export class UserProfileComponent implements OnInit {
 
   user:User;
+  id:number;
 
   constructor(private router:Router,private userService:UserService) { }
 
   ngOnInit() {
-    const id=localStorage.getItem('userId');
-    this.userService.getUserById(+id).subscribe(data=>{
+    this.id=+sessionStorage.getItem('userId');
+    this.userService.getUserById(this.id).subscribe(data=>{
       this.user=data;
     })
   }
 
   updateUser(){
-    localStorage.setItem('userId',this.user.id.toString());
-    this.router.navigate(['/update-user']);
+    this.router.navigate(['/update-profile']);
   }
 
   deactivateUser(){
     this.user.confirmed=false;
     this.userService.updateUser(this.user).subscribe(data=>{
-      alert('Account Deactivated Successfully.');
-      this.router.navigate(['/display-users']);
+      this.router.navigate(['/logout']);
     })
   }
 

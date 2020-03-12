@@ -1,42 +1,75 @@
 <div class="row">
   <div class="col-3"></div>
   <div class="col-6">
-    <form [formGroup]="registerCompany" class="form-group border p-5 border-curved mt-5">
-      <p class="h2 text-muted text-uppercase text-center mb-4">Company</p>
-   
+    <form [formGroup]="newCompanyForm" class="form-group border p-5 border-curved mt-5">
+      <p class="h2 text-muted text-uppercase text-center mb-4" (ngSubmit)="saveCompany()">Company</p>
 
       <label for="name">Company Name:</label>
       <input type="text" name="name" formControlName="name" class="form-control" placeholder="Name of Company">
 
       <label for="turnover">Turnover:</label>
-      <input type="number" name="turnover" formControlName="turnover" class="form-control" placeholder="Company Turnover">
+      <input type="number" name="turnover" formControlName="turnover" class="form-control"
+        placeholder="Company Turnover">
 
       <label for="ceo">CEO:</label>
-      <input type="text" name="ceo" formControlName="ceo" class="form-control" placeholder="CEO of Company">
-      
-          <label for="board-of-directors">Board of Director:</label>
-          <button (click)="addItem()" class="btn btn-secondary ml-5"><i class="fa fa-plus"></i></button>
-        <div>
-          <input id="board-of-directors" type="text" name="board-of-directors"  class="form-control mb-4" placeholder="Board of Director of Company">
-        </div>
-
-      <label for="listed-in-stock-exchanges">Listed in Stock Exchanges:</label><br>
-      <small class="text-info">Hold [Ctrl] to Select Multiple Stock Exchanges</small>
-      <select class="form-control" name="listed-in-stock-exchanges" formControlName="listed_in_stock_exchanges" multiple size="2">
-          <option value="bse">BSE</option>
-          <option value="nse">NSE</option>
-      </select>
+      <input type="text" name="ceo" formControlName="ceo" class="form-control mb-2" placeholder="CEO of Company">
 
       <label for="sector">Sector:</label>
-      <input type="text" name="sector" formControlName="sector" class="form-control" placeholder="Name of Sector">
+        <select class="form-control" name="sector" formControlName="sector" [(ngModel)]="selected_sector">
+          <option value="" disabled selected>Select Sector</option>
+          <option *ngFor="let sector of sectors" value="{{sector.name}}">{{sector.name}}</option>
+        </select>
+
+      <div class="form-group" formArrayName="directors">
+        <div class="row px-3">
+          <label for="directors">Board of Directors:</label>
+        </div>
+        <div class="input-group mb-2"
+          *ngFor="let directorControl of newCompanyForm.controls.directors.controls; let i = index">
+          <input type="text" [formControlName]="i" class="form-control " placeholder="Enter Director Name" required>
+          <div class="input-group-append">
+            <button *ngIf="i>0" class="btn btn-danger" (click)="removeDirector(i)">
+              <i [class]="faTrash"></i>
+            </button>
+            <button *ngIf="i==0" class="btn btn-primary" (click)="addDirector()">
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" formArrayName="listedIn">
+        <div class="row px-3">
+          <label for="stockExchange" class="form-control-label">Stock Exchanges and Stock Code:</label>
+        </div>
+        <div *ngFor="let StockExG of newCompanyForm.get('listedIn').controls; let i = index" class="mb-2">
+          <div class="input-group row mx-auto" [formGroupName]="i">
+            <select name="stockExchange" id="stockExchange" class="custom-select col-7"
+              formControlName="stockExchangeName" required>
+              <option value="" selected disabled>Select Stock Exchange</option>
+              <option *ngFor="let stockExchange of stockExchanges" [value]="stockExchange.name">{{stockExchange.name}}
+              </option>
+            </select>
+            <input type="text" name="stockCode" id="stockCode" class="form-control col-5"
+              placeholder="Enter Stock Code" required formControlName="stockCode">
+            <div class="input-group-append">
+              <button *ngIf="i>0" class="btn btn-danger" (click)="(removeStockExchange(i))">
+                <i [class]="faTrash"></i>
+              </button>
+              <button *ngIf="i == 0" class="btn btn-primary" (click)="addStockExchange()">
+                <i class="fa fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <label for="brief">Brief:</label>
-      <textarea class="form-control" name="brief" formControlName="brief" id="" cols="30" rows="3" placeholder="Brief Information about Company"></textarea>
+      <textarea class="form-control" name="brief" formControlName="brief" id="" cols="30" rows="3"
+        placeholder="Brief Information about Company"></textarea>
 
-      <label for="stock_code">Stock Code:</label>
-      <input type="text" name="stock_code" formControlName="stock_code" class="form-control mb-4" placeholder="Unique Stock Code">
-
-      <button type="submit" class="btn btn-outline-success text-dark text-center form-control" (click)="addCompany()" [disabled]="!registerCompany.valid">Add Company</button>
+      <button type="submit" class="btn btn-outline-success text-dark text-center form-control my-3" (click)="addCompany()"
+        [disabled]="!newCompanyForm.valid">Add Company</button>
     </form>
   </div>
 </div>

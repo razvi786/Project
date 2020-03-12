@@ -12,9 +12,9 @@ declare var $:any;
 export class ValidateComponent implements OnInit {
 
   code: number;
-  user: User;
   message:string;
-  activate_message:string="Invalid URL";
+  activate_message:string="Activating User";
+  activated:boolean=false;
 
   constructor(private router: Router, private userService: UserService) { }
 
@@ -26,18 +26,20 @@ export class ValidateComponent implements OnInit {
 
   activate_user() {
     this.userService.getUserByCode(this.code).subscribe(u => {
-      this.activate_message="Activating User";
-      this.user = u;
-      this.update_database()
+      this.update_database(u)
+    },error => {
+      this.activate_message="Invalid URL"
+      this.message = 'User Activated Failed';
+      $('#alert').modal('show');
     })
   }
 
-  update_database() {
-    let new_user: User = this.user;
-    new_user.confirmed = true;
-    new_user.code= Math.random() * 10000000;
-    this.userService.updateUser(new_user).subscribe(u => {
+  update_database(u:User) {
+    u.confirmed = true;
+    u.code= 0;
+    this.userService.updateUser(u).subscribe(u => {
       this.activate_message = 'User Activated Successfully';
+      this.activated=true;
       this.message = 'User Activated Successfully';
       $('#alert').modal('show');
     })

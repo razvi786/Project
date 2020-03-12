@@ -3,7 +3,11 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { UserService } from 'src/services/user.service';
 import { CompanyService } from 'src/services/company.service';
 import { Router } from '@angular/router';
-declare var $:any;
+import { StockExchange } from 'src/models/stock-exchange';
+import { StockExchangeService } from 'src/services/stock-exchange.service';
+import { SectorService } from 'src/services/sector.service';
+import { Sector } from 'src/models/sector';
+declare var $: any;
 
 @Component({
   selector: 'app-add-company',
@@ -12,48 +16,77 @@ declare var $:any;
 })
 export class AddCompanyComponent implements OnInit {
 
-  registerCompany:FormGroup;
-  message:string;
-  board_of_directors:FormArray;
+  newCompanyForm: FormGroup;
+  message: string;
+  board_of_directors: FormArray;
+  faTrash="fa fa-trash";
+  stockExchanges:StockExchange[];
+  selected_sector:string="";
+  sectors:Sector[];
 
-  constructor(private formBuilder:FormBuilder,private companyService:CompanyService,private router:Router) { }
+  constructor(private formBuilder: FormBuilder, private companyService: CompanyService, private router: Router, private stockExchangeService:StockExchangeService, private sectorService:SectorService) { }
 
-  addCompany(){
+  addCompany() {
 
-    console.log(this.registerCompany.value)
-    
-    this.companyService.saveCompany(this.registerCompany.value).subscribe(data=>{
-      this.message="Company Registered Successfully"
+    console.log(this.newCompanyForm.value)
+
+    this.companyService.saveCompany(this.newCompanyForm.value).subscribe(data => {
+      this.message = "Company Registered Successfully"
       $('#alert').modal('show')
     });
   }
 
   ngOnInit() {
-    this.registerCompany=this.formBuilder.group({
-      id:[],
-      name:['',Validators.required],
-      turnover:['',Validators.required],
-      ceo:['',Validators.required],
-      board_of_directors:this.formBuilder.array([]),
-      listed_in_stock_exchanges:[],
-      sector:['',Validators.required],
-      brief:['',Validators.required],
-      stock_code:['',Validators.required],
-      activated:['true',Validators.required]
+    this.newCompanyForm = this.formBuilder.group({
+      id: [],
+      name: ['', Validators.required],
+      turnover: ['', Validators.required],
+      ceo: ['', Validators.required],
+      sector: ['', Validators.required],
+      brief: [''],
+      directors: this.formBuilder.array(
+        [this.formBuilder.control("")]
+      ),
+      listedIn: this.formBuilder.array([
+        this.formBuilder.group({
+          stockExchangeName: ["", Validators.required],
+          stockCode: ["", Validators.required]
+        })
+      ])
     });
+    this.stockExchangeService.getAllStockExchanges().subscribe(data=>{
+      this.stockExchanges=data;
+    })
+    this.sectorService.getAllSectors().subscribe(data=>{
+      this.sectors=data;
+    })
   }
 
-  createItem(): FormGroup {
-    return this.formBuilder.group({
-      name:''
-    });
+  addDirector() {
+    const control = this.formBuilder.control("");
+    (<FormArray>this.newCompanyForm.get("directors")).push(control);
   }
 
-  addItem(): void {
-    this.board_of_directors = this.registerCompany.get('board_of_directors') as FormArray;
-    this.board_of_directors.push(this.createItem());
+  removeDirector(i: number) {
+    (<FormArray>this.newCompanyForm.get("directors")).removeAt(i);
+  }
 
-    document.getElementById("board-of-directors").innerHTML="";
+  addStockExchange() {
+    const stockExGroup = this.formBuilder.group({
+      stockExchangeName: ["", Validators.required],
+      stockCode: ["", Validators.required]
+    });
+    (<FormArray>this.newCompanyForm.get("listedIn")).push(
+      stockExGroup
+    );
+  }
+
+  removeStockExchange(i: number) {
+    (<FormArray>this.newCompanyForm.get("listedIn")).removeAt(i);
+  }
+
+  saveCompany(){
+  console.log(this.newCompanyForm.value);
   }
 
 }

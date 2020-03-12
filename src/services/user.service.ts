@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from 'src/models/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  httpUrl = "http://localhost:8765/user-service/user/";
+  httpUrl = environment.server + "user-service/user/";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -33,7 +34,7 @@ export class UserService {
   }
 
   getUserByCode(code: number): Observable<User> {
-    return this.httpClient.get<User>(this.httpUrl + "activate/" + code);
+    return this.httpClient.get<User>(this.httpUrl + "code/" + code);
   }
 
   getUserByEmail(email: string): Observable<User> {

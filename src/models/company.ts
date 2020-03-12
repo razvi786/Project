@@ -1,12 +1,13 @@
+import { ListedIn } from './listed-in';
+
 export class Company{
     id:number;
     name: string;
     turnover:number;
     ceo:string;
-    board_of_directors:string[];
-    listed_in_stock_exchanges:string[];
+    directors:string[];
+    listed_in:ListedIn[];
     sector:string;
     brief:string;
-    stock_code:string;
     activated:boolean;
 }

@@ -18,26 +18,15 @@ export class DisplayUsersComponent implements OnInit {
     this.userService.getAllUsers().subscribe(data => {
       this.users=data;
     })
-   
   }
 
   deleteUser(user:User){
-    this.userService.removeUser(user.id).subscribe(data=>{
-      alert("User "+user.username+" Deleted Successfully");
-    });
+    this.userService.removeUser(user.id).subscribe();
     this.users=this.users.filter(u => u!==user);
   }
 
   updateUser(user:User){
-    localStorage.removeItem('userId');
-    localStorage.setItem('userId',user.id.toString());
-    this.router.navigate(['/update-user']);
-  }
-
-  viewProfile(user:User){
-    localStorage.removeItem('userId');
-    localStorage.setItem('userId',user.id.toString());
-    this.router.navigate(['/user-profile']);
+    this.router.navigate(['/update-user',user.id]);
   }
 
 }

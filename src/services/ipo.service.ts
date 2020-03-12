@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IPO } from 'src/models/ipo';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IPOService {
 
-  httpUrl = "http://localhost:8765/initial-public-offering-service/ipo/"
+  httpUrl = environment.server + "initial-public-offering-service/ipo/"
 
   constructor(private httpClient:HttpClient) { }
 

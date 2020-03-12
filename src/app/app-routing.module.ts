@@ -15,7 +15,7 @@ import { ManageCompanyComponent } from './admin/manage-company/manage-company.co
 import { ManageStockExchangeComponent } from './admin/manage-stock-exchange/manage-stock-exchange.component';
 import { AddIpoComponent } from './admin/add-ipo/add-ipo.component';
 import { UpdateCompanyComponent } from './admin/update-company/update-company.component';
-import { UpdateUserComponent } from './user/update-user/update-user.component';
+import { UpdateUserComponent } from './admin/update-user/update-user.component';
 import { ChangePasswordComponent } from './common/change-password/change-password.component';
 import { ResetCodeComponent } from './common/reset-code/reset-code.component';
 import { ResetPasswordComponent } from './common/reset-password/reset-password.component';
@@ -36,6 +36,7 @@ import { SearchComponent } from './user/search/search.component';
 import { ChartsComponent } from './user/charts/charts.component';
 import { CompareCompanyComponent } from './user/compare-company/compare-company.component';
 import { CompareSectorComponent } from './user/compare-sector/compare-sector.component';
+import { UpdateProfileComponent } from './user/update-profile/update-profile.component';
 
 
 const routes: Routes = [
@@ -53,13 +54,13 @@ const routes: Routes = [
   { path: 'import-data', component: ImportDataComponent, canActivate: [AdminGuard] },
   { path: 'manage-company', component: ManageCompanyComponent, canActivate: [AdminGuard] },
   { path: 'manage-stock-exchange', component: ManageStockExchangeComponent, canActivate: [AdminGuard] },
-  { path: 'update-user', component: UpdateUserComponent, canActivate: [LoginGuard] },
+  { path: 'update-user/:id', component: UpdateUserComponent, canActivate: [LoginGuard] },
   { path: 'change-password', component: ChangePasswordComponent, canActivate: [LoginGuard] },
   { path: 'reset-code', component: ResetCodeComponent, canActivate: [LogoutGuard] },
   { path: 'reset-password', component: ResetPasswordComponent, canActivate: [LoginGuard] },
   { path: 'user-profile', component: UserProfileComponent, canActivate: [LoginGuard] },
   { path: 'upload-dp', component: UploadDpComponent, canActivate: [LoginGuard] },
-  { path: 'update-stock-exchange', component: UpdateStockExchangeComponent, canActivate: [AdminGuard] },
+  { path: 'update-stock-exchange/:id', component: UpdateStockExchangeComponent, canActivate: [AdminGuard] },
   { path: 'display-ipos', component: DisplayIposComponent, canActivate: [AdminGuard] },
   { path: 'view-ipos', component: ViewIposComponent, canActivate: [LoginGuard] },
   { path: 'user/activate', component: ValidateComponent, canActivate: [LogoutGuard] },
@@ -70,6 +71,7 @@ const routes: Routes = [
   { path: 'charts', component: ChartsComponent },
   {path: 'compare-company',component: CompareCompanyComponent},
   {path:'compare-sector',component: CompareSectorComponent},
+  {path: 'update-profile',component:UpdateProfileComponent},
 
   { path: '**', component: LandingPageComponent },
 ];

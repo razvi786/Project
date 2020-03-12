@@ -23,7 +23,7 @@ import { DisplayUsersComponent } from './admin/display-users/display-users.compo
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { UpdateUserComponent } from './user/update-user/update-user.component';
+import { UpdateUserComponent } from './admin/update-user/update-user.component';
 import { ChangePasswordComponent } from './common/change-password/change-password.component';
 import { ResetCodeComponent } from './common/reset-code/reset-code.component';
 import { ResetPasswordComponent } from './common/reset-password/reset-password.component';
@@ -42,6 +42,7 @@ import { ChartsComponent } from './user/charts/charts.component';
 import { HttpInterceptorService } from 'src/services/http-interceptor.service';
 import { CompareCompanyComponent } from './user/compare-company/compare-company.component';
 import { CompareSectorComponent } from './user/compare-sector/compare-sector.component';
+import { UpdateProfileComponent } from './user/update-profile/update-profile.component';
 
 
 @NgModule({
@@ -80,6 +81,7 @@ import { CompareSectorComponent } from './user/compare-sector/compare-sector.com
     ChartsComponent,
     CompareCompanyComponent,
     CompareSectorComponent,
+    UpdateProfileComponent,
   ],
   imports: [
     BrowserModule,
