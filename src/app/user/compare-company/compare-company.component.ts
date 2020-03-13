@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Company } from 'src/models/company';
 import { CompanyService } from 'src/services/company.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StockExchange } from 'src/models/stock-exchange';
 import { StockExchangeService } from 'src/services/stock-exchange.service';
@@ -27,7 +27,9 @@ export class CompareCompanyComponent implements OnInit {
     this.compareCompany=this.formBuilder.group({
       stock_exchange:['',[Validators.required]],
       company1:['',[Validators.required]],
+      company1name:[''],
       company2:['',[Validators.required]],
+      company2name:[''],
       from:['',[Validators.required]],
       to:['',[Validators.required]],
       periodicity:['',[Validators.required]]
@@ -50,9 +52,7 @@ export class CompareCompanyComponent implements OnInit {
             this.companies.push(c);
           }
         }
-      }
-      console.log("Companies: "+this.companies);
-      
+      }      
     })
   }
 

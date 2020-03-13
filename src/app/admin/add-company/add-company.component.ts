@@ -28,8 +28,6 @@ export class AddCompanyComponent implements OnInit {
 
   addCompany() {
 
-    console.log(this.newCompanyForm.value)
-
     this.companyService.saveCompany(this.newCompanyForm.value).subscribe(data => {
       this.message = "Company Registered Successfully"
       $('#alert').modal('show')
