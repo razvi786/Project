@@ -3,18 +3,24 @@
     <div class="col-6">
       <form [formGroup]="addSP" (ngSubmit)="addSp()" class="form-group border p-5 border-curved mt-5">
         <p class="h2 text-muted text-uppercase text-center mb-4">Stock Price</p>
-  
-        <label for="stock_exchange">Stock Exchange:</label>
-        <select class="form-control" formControlName="stock_exchange"  [(ngModel)]="selected_stock_exchange">
-            <option value="" disabled selected>Select Stock Exchange</option>
-            <option *ngFor="let se of stock_exchanges" value="{{se.name}}">{{se.name}}</option>
-        </select>
+        <div *ngFor="let error of errors" class="alert alert-success alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>{{error}}</strong>
+        </div>
 
-        <label for="company_code">Company Code:</label>
-        <select class="form-control" formControlName="company_code">
+        <label for="company_code">Company Name:</label>
+        <select class="form-control" formControlName="company_code" (change)="getCompanyName($event)">
             <option value="" selected disabled>Select Company code</option>
             <option *ngFor="let c of companies" [value]="c.name">{{c.name}}</option>
         </select>
+
+        <label for="stock_exchange">Stock Exchange:</label>
+        <select class="form-control" formControlName="stock_exchange" (change)="filterCompanies($event)">
+            <option value="" disabled selected>Select Stock Exchange</option>
+            <option *ngFor="let se of stock_exchanges" [value]="se.name">{{se.name}}</option>
+        </select>
+
+        
 
         <label for="date">Date:</label>
         <input type="date" class="form-control" placeholder="Date" formControlName="date">

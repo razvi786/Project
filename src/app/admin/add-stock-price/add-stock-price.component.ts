@@ -6,6 +6,7 @@ import { StockPriceService } from 'src/services/stock-price.service';
 import { StockExchange } from 'src/models/stock-exchange';
 import { CompanyService } from 'src/services/company.service';
 import { Company } from 'src/models/company';
+import { ListedIn } from 'src/models/listed-in';
 
 @Component({
   selector: 'app-add-stock-price',
@@ -19,7 +20,10 @@ export class AddStockPriceComponent implements OnInit {
   addSP:FormGroup;
   stock_exchanges:StockExchange[];
   companies:Company[];
-  selected_stock_exchange:string;
+  companyCodes:string[];
+  selected_stock_exchange:string="";
+  selected_company:Company;
+  errors:string[]=[];
 
   ngOnInit() {
     this.addSP=this.formBuilder.group({
@@ -36,7 +40,30 @@ export class AddStockPriceComponent implements OnInit {
     this.companyService.getAllCompanies().subscribe(c=>{
       this.companies=c;
     })
-    this.selected_stock_exchange="";
+    this.errors.push("Stock Price Inserted Successfully.");
+  }
+
+  getCompanyName(e:Event){
+    this.selected_company=(<HTMLInputElement>e.target).value;
+      for(let i in this.selected_company.){
+        if(company.listedIn[i].stockExchangeName==this.selected_stock_exchange){
+          
+        }
+      }
+    }
+  }
+
+  filterCompanies(e:Event){
+    this.selected_stock_exchange=(<HTMLInputElement>e.target).value;
+    for(let company of this.companies){
+      for(let i in company.listedIn){
+        if(company.listedIn[i].stockExchangeName==this.selected_stock_exchange){
+          
+        }
+      }
+    }
+    console.log(this.companies);
+    
   }
 
   test(){
@@ -48,8 +75,7 @@ export class AddStockPriceComponent implements OnInit {
   addSp(){
     console.log(this.addSP.value);
     this.spService.saveStockPrice(this.addSP.value).subscribe(data=>{
-      alert('Stock Price Inserted Successfully.');
-      // this.router.navigate(['/manage-stock-exchange']);
+      this.errors.push("Stock Price Inserted Successfully.");
     });
   }
 
