@@ -9,18 +9,16 @@
         </div>
 
         <label for="company_code">Company Name:</label>
-        <select class="form-control" formControlName="company_code" (change)="getCompanyName($event)">
-            <option value="" selected disabled>Select Company code</option>
+        <select class="form-control" formControlName="company_name" [(ngModel)]="selected_company" (change)="filterCompanies()">
+            <option value="" selected disabled>Select Company Name</option>
             <option *ngFor="let c of companies" [value]="c.name">{{c.name}}</option>
         </select>
 
         <label for="stock_exchange">Stock Exchange:</label>
-        <select class="form-control" formControlName="stock_exchange" (change)="filterCompanies($event)">
+        <select class="form-control" formControlName="stock_exchange" [(ngModel)]="selected_stock_exchange" (change)="selectCompanyCode()">
             <option value="" disabled selected>Select Stock Exchange</option>
-            <option *ngFor="let se of stock_exchanges" [value]="se.name">{{se.name}}</option>
+            <option *ngFor="let se of stock_exchanges" [value]="se">{{se}}</option>
         </select>
-
-        
 
         <label for="date">Date:</label>
         <input type="date" class="form-control" placeholder="Date" formControlName="date">

@@ -27,20 +27,22 @@
           <span class="p-3 lead">{{selected_company.ceo}}</span>
           <br>
 
-          <!-- <label class="p-3 h5" >Board of Directors:</label>
-          <span class="p-3 lead">{{selected_company.board_of_directors}}</span>
-          <br>
-
-          <label class="p-3 h5" >Listed in Stock Exchanges:</label>
-          <span class="p-3 lead">{{selected_company.listed_in_stock_exchanges}}</span>
-          <br> -->
-
           <label class="p-3 h5" >Brief:</label>
           <span class="p-3 lead">{{selected_company.brief}}</span>
           <br>
 
           <label class="p-3 h5" >Sector:</label>
           <span class="p-3 lead">{{selected_company.sector}}</span>
+          <br>
+
+          <label class="p-3 h5" >Board of Directors:</label><br>
+          <span class="p-3 lead">{{selected_company.directors}}</span>
+          <br>
+
+          <label class="p-3 h5" >Listed in Stock Exchanges:</label>
+          <ul class="list-unstyled">
+              <li class="lead" *ngFor="let listed of selected_company.listedIn">{{listed.stockExchangeName}}:{{listed.stockCode}}</li>
+          </ul>
           <br>
 
       </div>

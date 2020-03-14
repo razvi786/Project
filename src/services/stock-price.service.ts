@@ -42,4 +42,8 @@ export class StockPriceService {
     return this.httpClient.get<any[]>(this.httpUrl+url);
   }
 
+  uploadStockSheet(formData:FormData):Observable<object>{
+    return this.httpClient.post<object>(this.httpUrl+"upload-stock-sheet",formData);
+  }
+
 }

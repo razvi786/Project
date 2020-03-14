@@ -2,12 +2,16 @@
     <div class="col-lg-3 col-md-2 col-sm-1"></div>
     <div class="col-lg-6 col-md-8 col-sm-10">
       <form [formGroup]="validateCode" class="form-group border p-3 p-lg-5 border-curved mt-5">
+        <!-- <div *ngFor="let error of errors" class="alert alert-success alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>{{error}}</strong>
+        </div> -->
         <p class="h2 text-muted text-uppercase text-center">Reset Password</p>
         
         <label for="code">Activation Code:</label>
         <input class="form-control mb-4" type="text" name="code" id="" placeholder="Paste Your Activation Code Here" formControlName="code">
         
-        <button class="btn btn-outline-success text-dark text-center form-control" (click)="checkCode()" [disabled]="!validateCode.valid">Reset</button>
+        <button class="btn btn-outline-success text-dark text-center form-control" (click)="reset_user()" [disabled]="!validateCode.valid">Reset</button>
       </form>
     </div>
   </div>

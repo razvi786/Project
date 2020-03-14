@@ -1,6 +1,6 @@
 export class StockPrice {
   id: number;
-  company_code: number;
+  company_code: string;
   stock_exchange: string;
   current_price: number;
   date: string;

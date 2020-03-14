@@ -1,13 +1,16 @@
 <div class="row">
   <div class="col-lg-3 col-md-2 col-sm-1"></div>
   <div class="col-lg-6 col-md-8 col-sm-10">
-    <form [formGroup]="validateUser" class="form-group border p-3 p-lg-5 border-curved mt-5">
+    <form [formGroup]="validateUser" (ngSubmit)="setResetCode()" class="form-group border p-3 p-lg-5 border-curved mt-5">
       <p class="h2 text-muted text-uppercase text-center">Reset Password</p>
-      
+      <div *ngFor="let error of errors" class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{error}}</strong>
+      </div>
       <label for="email">Enter Your Email:</label>
       <input class="form-control mb-4" type="text" name="email" id="" placeholder="Your Email" formControlName="email">
       
-      <button class="btn btn-outline-success text-dark text-center form-control" (click)="setResetCode()" [disabled]="!validateUser.valid">Reset</button>
+      <button type="submit" class="btn btn-outline-success text-dark text-center form-control" [disabled]="!validateUser.valid">Reset</button>
     </form>
   </div>
 </div>

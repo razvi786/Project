@@ -12,55 +12,25 @@ declare var $:any;
 })
 export class ResetCodeComponent implements OnInit {
 
-  code: number;
-  user: User;
+  validateCode:FormGroup;
   message:string;
-  activate_message:string="Invalid URL";
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService, private formBuilder:FormBuilder) { }
 
   ngOnInit() {
-    let urls = this.router.url.split("=");
-    this.code = +urls[1];
-    this.reset_user();
+    this.validateCode=this.formBuilder.group({
+      code:['',Validators.required]
+    })
   }
 
   reset_user() {
-    this.userService.getUserByCode(this.code).subscribe(u => {
-      this.activate_message="Resetting User";
-      this.user = u;
-      this.update_database()
+    this.userService.getUserByCode(this.validateCode.controls.code.value).subscribe(u => {
+      u.code=0
+      this.userService.updateUser(u).subscribe(u => {
+        this.message = 'User Activated Successfully';
+        $('#alert').modal('show');
+      })
     })
   }
-
-  update_database() {
-    let new_user: User = this.user;
-    new_user.code= Math.ceil(Math.random() * 10000000);
-    this.userService.updateUser(new_user).subscribe(u => {
-      this.activate_message = 'User Activated Successfully';
-      this.message = 'User Activated Successfully';
-      $('#alert').modal('show');
-    })
-  }
-
-  // validateCode:FormGroup;
-
-  // constructor(private router:Router,private formbuilder:FormBuilder,private userService:UserService) { }
-
-  // ngOnInit() {
-  //   this.validateCode=this.formbuilder.group({
-  //     code:['',Validators.required]
-  //   });
-  // }
-
-  // checkCode(){
-  //   let code=+localStorage.getItem('code');
-  //   let user_code=+this.validateCode.controls.code.value;
-  //   if(code === user_code){
-  //     this.router.navigate(['/reset-password']);
-  //   }else{
-  //     alert('Incorrect Activation Code.');
-  //   }
-  // }
 
 }
